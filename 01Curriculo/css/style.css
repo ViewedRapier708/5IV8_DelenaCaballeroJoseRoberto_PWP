@@ -45,7 +45,6 @@ body {
     text-align: center;
     transition: background 0.3s;
 }
-h2{
+h2,p,li{
     font-family: Arial, Helvetica, sans-serif;
-    font-display: bold;
 }
