@@ -1,25 +1,26 @@
 body {
-    padding: 0;
-    margin: 0;
-}
-.cotainer-main {
-    border: 0;
-    padding: 20px;
-    background-color: white;
     display: flex;
-    justify-content: center;
-    background-color: rgb(26, 130, 130);
     align-items: center;
     flex-direction: column;
+    
+
+}
+.container-Datos {
+    padding: 20px;
+    background-color: white;
+    background-color: rgb(192, 246, 246);
+    border-radius: 30px;
+    box-shadow: 2px 3px 10px;
+    width: 75%;
 }
 .cotainer-nav {
     align-items: center;
     background-color: rgb(71, 148, 160);
     border-radius: 19px;
     height: 20%;
-    width: 80%;
+    width: 77%;
     box-shadow: 1px 1px 10px;
-margin: 2rem;
+    margin: 1rem;
 }
 .cotainer-nav ul {
     display: flex;
@@ -31,7 +32,10 @@ margin: 2rem;
 
 }
 .cotainer-nav li :hover {
-    background-color: aliceblue;
+    background-color: rgb(122, 128, 133);
+    translate: 10%; ;
+    transition: translate 0.3s;
+    
 }
 .cotainer-nav a {
     display: block;
@@ -41,7 +45,7 @@ margin: 2rem;
     text-align: center;
     transition: background 0.3s;
 }
-.cotainer-main .Datos{
-    background-color: gray;
-    width: 100px;
+h2{
+    font-family: Arial, Helvetica, sans-serif;
+    font-display: bold;
 }
