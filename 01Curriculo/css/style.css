@@ -12,6 +12,7 @@ body {
     border-radius: 30px;
     box-shadow: 2px 3px 10px;
     width: 75%;
+    
 }
 .cotainer-nav {
     align-items: center;
@@ -45,6 +46,38 @@ body {
     text-align: center;
     transition: background 0.3s;
 }
-h2,p,li{
+h2{
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+}
+p,li{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+   
+   
+#Datos{
+     width: 30rem;
+    height: 10rem;
+    border: 3px solid;
+    padding: 10px;
+}
+#Resumen_profecional{
+   width: 30rem;
+    height: 10rem;
+    border: 3px solid;
+    padding: 10px;
+}
+#Experiencia{
+    width: 30rem;
+    height: 10rem;
+    border: 3px solid;
+    padding: 10px;
+}
+#Aptitudes{
+width: 30rem;
+    height: 10rem;
+    border: 3px solid;
+    padding: 10px;
 }
