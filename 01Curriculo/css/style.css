@@ -43,7 +43,7 @@ body {
 }
 
 .cotainer-nav li :hover {
-    background-color: rgb(40, 139, 156);
+    background-color:   rgb(40, 139, 156);
     translate: 10px ;
     transition: translate 0.3s;
     height: 1rem;
@@ -93,7 +93,7 @@ article {
 }
 
 #Aptitudes {
-    height: 14rem;
+    height: 15rem;
 }
 #Quien_soy{
     height: 13rem;
