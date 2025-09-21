@@ -103,7 +103,15 @@ footer{
     gap: 30px;
 color: white;
 }
-
+#Regresar{
+    height: 3rem;
+    width: 7rem;
+    background-color: aquamarine;
+    text-align: center;
+    border-radius: 10px;
+    margin-left: 85rem;
+    color: black;
+}   
 
 
  
