@@ -2,18 +2,22 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
-    
+
 
 }
+
 .container-Datos {
+
     padding: 20px;
     background-color: white;
     background-color: rgb(192, 246, 246);
     border-radius: 30px;
     box-shadow: 2px 3px 10px;
     width: 75%;
-    
+
+
 }
+
 .cotainer-nav {
     align-items: center;
     background-color: rgb(71, 148, 160);
@@ -23,6 +27,7 @@ body {
     box-shadow: 1px 1px 10px;
     margin: 1rem;
 }
+
 .cotainer-nav ul {
     display: flex;
     justify-content: center;
@@ -32,12 +37,15 @@ body {
     padding: 0;
 
 }
+
 .cotainer-nav li :hover {
     background-color: rgb(122, 128, 133);
-    translate: 10%; ;
+    translate: 10%;
+    ;
     transition: translate 0.3s;
-    
+
 }
+
 .cotainer-nav a {
     display: block;
     color: white;
@@ -46,38 +54,50 @@ body {
     text-align: center;
     transition: background 0.3s;
 }
-h2{
+
+h2 {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 30px;
 }
-p,li{
+
+p,
+li {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
 }
 
-   
-   
-#Datos{
-     width: 30rem;
-    height: 10rem;
-    border: 3px solid;
+article {
+    width: 90%;
+    margin: 3rem;
+    border-radius: 10px;
     padding: 10px;
+    border: 3px solid;
+    background-color: rgb(125, 210, 214);
+    box-shadow: 1px 1px 20px;
 }
-#Resumen_profecional{
-   width: 30rem;
-    height: 10rem;
-    border: 3px solid;
-    padding: 10px;
+
+#Habilidades_tecnicas {
+
+    height: 16rem;
 }
-#Experiencia{
-    width: 30rem;
+
+#Resumen_profecional {
+
     height: 10rem;
-    border: 3px solid;
-    padding: 10px;
+
+
 }
-#Aptitudes{
-width: 30rem;
-    height: 10rem;
-    border: 3px solid;
-    padding: 10px;
+
+#Experiencia {
+
+
+    height: 11rem;
+
+}
+
+#Aptitudes {
+
+    height: 13rem;
+
+
 }
