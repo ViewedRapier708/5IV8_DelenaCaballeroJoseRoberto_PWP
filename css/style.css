@@ -2,15 +2,18 @@ body{
     background-color: rgb(212, 203, 198);
     font-family: 20px;
 }
-#portafolio{
-    color: black;
+#h2portafolio{
+    font-size: 25px;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    
 }
 .h1{
     font-size: 30px;
 }
 #Nombre{
     color: rgb(222, 243, 230);
-    background-color: rgb(24, 50, 50);
+    background-color: rgb(39, 82, 60);
     width:  70rem;
     text-align: center;
     font-size: 2rem;
@@ -37,14 +40,14 @@ p{
 }
 .container-table{
     margin-top: 3rem;
-    border: 3px solid black;
+    border: 3px solid rgb(0, 0, 0);
     width: 60rem;
     border-radius: 10px;
     font-size: 1.2rem;
     font-family: 'Courier New', Courier, monospace;
     text-align: left;
     text-align: center;
-    background-color: rgb(24, 50, 50);
+    background-color: rgb(55, 114, 114);
     
     }
 body{
@@ -59,7 +62,8 @@ body{
     align-items: center;
     height: 40rem;
     width: 70rem;
-    background-color: rgb(149, 130, 120);
+     background: linear-gradient(to left, rgba(70, 181, 172, 0.828), rgb(57, 154, 143));
+    
     box-shadow: 4px 1px 10px grey;
     border-radius: 20px;
     padding: 2rem;
@@ -83,10 +87,6 @@ a{
     background-color: rgb(92, 135, 108);
     transition: background-color 0.3s;
     cursor: pointer;
-}
-.link:focus{
-    background-color: rgb(20, 139, 64);
-  
 }
 .link:active{
     background-color: rgb(149, 192, 149);
