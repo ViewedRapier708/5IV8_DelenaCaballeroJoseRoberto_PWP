@@ -1,99 +1,136 @@
-body{
-    background-color: rgb(212, 203, 198);
-    font-family: 20px;
-}
-#h2portafolio{
-    font-size: 25px;
-    text-align: center;
+body {
+    background-color: #121507;
     font-family: 'Courier New', Courier, monospace;
-    
-}
-.h1{
-    font-size: 30px;
-}
-#Nombre{
-    color: rgb(222, 243, 230);
-    background-color: rgb(39, 82, 60);
-    width:  70rem;
-    text-align: center;
-    font-size: 2rem;
-    font-family: 'Courier New', Courier, monospace;
-    border: 3px solid black;
-    border-radius: 10px;
-    box-shadow: 10px 15px 5px grey;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    margin-bottom: 2rem;
-}
-#portafolio{
-    text-align: left;
-    font-size: 1.5rem;
-    font-family: 'Courier New', Courier, monospace;
-    border: 3px solid black;
-    width: 60rem;
-    border-radius: 10px;
-    
-}
-p{
-    font-size: 1.2rem;
-    font-family: 'Courier New', Courier, monospace;
-}
-.container-table{
-    margin-top: 3rem;
-    border: 3px solid rgb(0, 0, 0);
-    width: 60rem;
-    border-radius: 10px;
-    font-size: 1.2rem;
-    font-family: 'Courier New', Courier, monospace;
-    text-align: left;
-    text-align: center;
-    background-color: rgb(55, 114, 114);
-    
-    }
-body{
+    font-size: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 2rem;
 }
-.container-Datos{
+
+#h2portafolio {
+    font-size: 25px;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    color: #f4eb91;
+}
+
+#Nombre {
+      font-size: 30px;
+    color: #f4eb91;
+    padding-left: 11rem;
+}
+
+#portafolio {
+    text-align: left;
+    font-size: 1.5rem;
+    font-family: 'Courier New', Courier, monospace;
+    border: 3px solid #12412b;
+    width: 60rem;
+    border-radius: 10px;
+    background-color: rgba(177, 226, 117, 0.1);
+    color: #f4eb91;
+}
+
+p {
+    font-size: 1.2rem;
+    font-family: 'Courier New', Courier, monospace;
+    color: #f4eb91;
+}
+
+.container-table {
+    margin-top: 3rem;
+    border: 3px solid #12412b;
+    width: 60rem;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    background-color: #1aad6e;
+    box-shadow: 5px 5px 15px rgba(18, 21, 7, 0.6);
+}
+
+.container-Datos {
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 40rem;
     width: 70rem;
-     background: linear-gradient(to left, rgba(70, 181, 172, 0.828), rgb(57, 154, 143));
-    
-    box-shadow: 4px 1px 10px grey;
+    background: linear-gradient(135deg, #12412b, #1aad6e, #b1e275);
+    box-shadow: 8px 8px 20px rgba(18, 21, 7, 0.6);
     border-radius: 20px;
     padding: 2rem;
-}   
-th, td{
-    border: 1px solid rgb(241, 241, 241);
-    border-collapse: collapse;
-    padding: 10px;      
-    background-color: rgb(222, 243, 230);
-    border-left: 0px;
-}
-a{
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-    font-size: 1.2rem;
-    color: rgb(24, 50, 50);
+    border: 2px solid #b1e275;
 }
 
-.link:hover{
-    background-color: rgb(92, 135, 108);
-    transition: background-color 0.3s;
+th, td {
+    border: 1px solid #12412b;
+    border-collapse: collapse;
+    padding: 10px;
+    background-color: #f4eb91;
+   
+    color: #121507;
+}
+
+a {
+    text-decoration: none;
+    color: #121507;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.link:hover {
+    background-color: #b1e275;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    transform: translateY(-2px);
+}
+
+.link:active {
+    background-color: #1aad6e;
+    color: #f4eb91;
+    transform: translateY(0px);
+}
+
+.encabezados {
+    background-color: #12412b;
+    color: #f4eb91;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+
+
+table {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(18, 21, 7, 0.4);
+}
+
+#Homero {
+    width: 100px;
+    height: auto;
+    margin-left: 10rem;
+    vertical-align: middle;
+}
+#Homero:hover {
+    transform: scale(1.1);
+    transition: all 0.3s ease;
     cursor: pointer;
 }
-.link:active{
-    background-color: rgb(149, 192, 149);
-  
-}
-.encabezados{
-    background-color: rgb(15, 143, 130);
-    color: white;
-    font-size: 1.5rem;
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    color: #121507;
+    background-color: #1aad6e;
+    width: 70rem;
+    text-align: center;
+    font-size: 1rem;
+    font-family: 'Courier New', Courier, monospace;
+    border: 3px solid #b1e275;
+    border-radius: 10px;
+    box-shadow: 10px 15px 20px rgba(18, 21, 7, 0.5);
+    padding-top: .5rem;
 }
