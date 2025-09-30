@@ -1,3 +1,9 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #69e9d1, #6bd680);
+    margin: 0;
+    padding: 0;
+}
 .container-informacion {
     width: 80%;
     margin: auto;
@@ -5,18 +11,21 @@
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 10rem;
 }
-
 .container-form{
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 30rem;
+    height: auto;
     margin: auto;
     background-color: #e6e6e6;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20rem;
+    
 }
 
 .container-form:hover{
@@ -24,4 +33,15 @@
     transition: 0.3s;
     transform: scale(1.02);
 }
-
+a{
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    margin-top: 20px;
+    display: inline-block;
+}
+a:hover{
+    
+    transition: 0.3s;
+    transform: scale(1.05);
+}
