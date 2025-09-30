@@ -85,7 +85,8 @@ function validar(formulario) {
     //vamos a crear una funcion de una expresion regular para validar el correo electronico
     //texto.texto@texto.texto
 
-    var b = /^[^@\s]+[^@\.\s]+(\.[^@\.\s]+)+$/;
+  var b = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+
 
     var txt = formulario.Correo.value;
 
