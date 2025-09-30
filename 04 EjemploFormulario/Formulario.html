@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejemplo Formulario</title>
-    <script src="js/validacion.js"></script>
+    <title>Ejemplo del formulario</title>
+    <script src="./js/validacion.js"></script>
 </head>
+
 <body>
     <p>Todos los formularios en la web, manejan metodos para el envio de las diferentes peticiones que realiza el
         usuario. Considerando la arquitectura Cliente-servidor, el manejo de las peticiones se hace por medio del
@@ -27,51 +29,34 @@
     <br>
     <p>En resumen los metodos son:
         <li>
-            <ol>GET: Sirve para enviar y realizar operaciones de lectura o consulta</ol>
-            <ol>POST: Sirve para enviar informacion de un recurso al servidor, con el fin de registrarlo</ol>
+            <ul>GET: Sirve para enviar y realizar operaciones de lectura o consulta</ul>
+            <ul>POST: Sirve para enviar informacion de un recurso al servidor, con el fin de registrarlo</ul>
             <ul>DELETE: Sirve para eliminar un recurso especifico dentro del servidor obteniendo una respuesta de
                 actualizacion</ul>
-                <ul>
-                    PUT: Sirve para almacenar la informacion de un recurso particular y conectarse al servicio para realizar la actualizacvion
-                </ul>
-                <ul>
-                    HEAD: Sirve para regresar ael codigo de puesta de ciañqioer cabecera HTTP asociada a un recurso
-                </ul>
+            <ul>PUT: Sirve para almacenar la informacion de un recurso particular y conectarse al servicio para realizar
+                la actualizacvion</ul>
+            <ul>HEAD: Sirve para regresar ael codigo de puesta de ciañqioer cabecera HTTP asociada a un recurso</ul>
         </li>
     </p>
 
-
-    <div
-    class="container-form">
-    <form method="post" id="formulario" name="formulario" onsubmit="return validar(this);" action="">
-       <br>
-
-        <label for="">Nombre:</label>
-<br>
-        <input type="text" id="nombre" name="nombre" required placeholder="Escribe tu nombre"> 
-        
-<br>
-        <label for="">Edad:</label>
-<br>    
-        <input type="number" id="edad" name="edad" required placeholder="Escribe tu edad">
-<br>
-    <label for="email">Email:</label>
-
-    <input type="email" id="correo" name="correo" required placeholder="Ingresa Aquí tu correo">
-    
-<br>
-
-<input type="submit" value="Enviar Registro" name="Enviar">
-
-<br>
-
-<input type="reset" value="Borrar Registro" name="Borrar">
-
-
-
-
-
-
-</form>
-</div>
+    <div class="container-form">
+        <form method="post" id="Formulario" name="Formulario" onsubmit="return validar(this)" action="">
+            <label for="">Nombre: </label>
+            <br> 
+            <input type="text" id="Nombre" name="Nombre" placeholder="Escribe tu nombre">
+            <br>
+            <label for="">Edad: </label>
+            <br> 
+            <input type="number" id="Edad" name="Edad" placeholder="Escribe tu edad">
+            <br>
+            <label for="">Email: </label>
+            <br> 
+            <input type="email" id="Correo" name="Correo" placeholder="Escribe tu correo">
+            <br>
+            <input type="submit" name="Enviar" value="Enviar registro">
+            <br>
+            <input type="reset" name="Borrar" value="Borrar datos">
+        </form>
+    </div>
 </body>
+</html>
