@@ -23,20 +23,20 @@
                         </td>
 
                         <td>
-                            <input type="text" name="cantidad" id="cantidad" onkeypress="">
+                            <input type="text" name="cantidad" id="cantidad" onkeypress="return ValidarNumeros(event)">
                         </td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td><input type="button" value="Calcular_interes" name="enviar" onclick=""></td>
+                        <td><input type="button" value="Calcular_interes" name="enviar" onclick="interes()"></td>
                     </tr>
                     <tr>
                         <td>Su saldo total con el interes es de :</td>
-                        <td> <input type="text" name="sueldoi" id="sueldoi" readonly="readonly" class="input_text"></td>
+                        <td> <input type="text" name="saldoi" id="saldoi" readonly="readonly" class="input_text"></td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td><input type="button" name="borrar" value="Borrar Datos" onclick=""></td>
+                        <td><input type="button" name="borrar" value="Borrar Datos" onclick="borrari()"></td>
                     </tr>
                 </table>
 
@@ -46,6 +46,7 @@
 
 
     </div>
+    <script src="./js/funcionesejercicio1.js"></script>
 </body>
 
 </html>
