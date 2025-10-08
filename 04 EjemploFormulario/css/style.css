@@ -46,3 +46,33 @@ a:hover{
     transition: 0.3s;
     transform: scale(1.05);
 }
+#Nombre {
+    width: 300px;
+    height: 35px;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #999;
+    margin-bottom: 10px;
+}
+#Correo {
+    width: 300px;
+    height: 35px;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #999;
+    margin-bottom: 10px;
+}
+#Edad {
+    width: 300px;
+    height: 35px;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #999;
+    margin-bottom: 10px;
+}
+label {
+
+}
