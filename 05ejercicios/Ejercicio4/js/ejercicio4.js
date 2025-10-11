@@ -5,8 +5,6 @@ function calcularCalificacionTotal() {
     const trabajoFinal = parseFloat(document.getElementById("trabajoFinal").value);
     const examenFinal = parseFloat(document.getElementById("examenFinal").value);
 
-
-
     // Validar cada sección por separado y borrar sólo el campo inválido
     if (isNaN(calificacion1) || calificacion1 < 0 || calificacion1 > 10) {
         alert("Calificación 1 inválida. Ingrese un valor numérico entre 0 y 10.");
@@ -34,12 +32,18 @@ function calcularCalificacionTotal() {
         document.getElementById("examenFinal").focus();
         return;
     } else {
-         const promedio = (calificacion1 + calificacion2 + calificacion3) / 3;
-    const porcentajeTrabajo = trabajoFinal * 0.3;
-    const porcentajeExamen = examenFinal * 0.4;
-    const calificacionTotal = promedio + porcentajeTrabajo + porcentajeExamen;
-    document.getElementById("calificacionTotal").value = calificacionTotal.toString();
-    }
+        // Pesos: 55% promedio de exámenes (las tres calificaciones), 30% examen final, 15% trabajo final
+        const promedioExamenes = (calificacion1 + calificacion2 + calificacion3) / 3;
+        const pesoExamenes = 0.55;
+        const pesoExamenFinal = 0.30;
+        const pesoTrabajoFinal = 0.15;
 
-   
+        const calificacionTotal =
+            promedioExamenes * pesoExamenes +
+            examenFinal * pesoExamenFinal +
+            trabajoFinal * pesoTrabajoFinal;
+
+        // Guardar con dos decimales
+        document.getElementById("calificacionTotal").value = calificacionTotal.toFixed(2).toString();
+    }
 }
