@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="./js/logica.js"></script>
+        <title>Ejercicio 2 - Comisiones por Venta</title>
+    </head>
+    <body>
+
+        <div class="container-main">
+            
+            <form class="container-form" onsubmit="return validarFormulario(this)" action="">
+                <table class="problema-table" style="width: 100%;">
+                    <h1>Comisiones por Venta </h1>
+                    <thead>
+                        <tr>
+                             <th>Sueldo</th>
+                            <th>Ventas</th>
+                            <th>Costo total de ventas</th>
+                            <th>Comisiones</th>
+                            <th>Sueldo con Comisiones</th>
+                            <th>Calcular</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="number" id="sueldo"  name="sueldo" placeholder="Ingrese su sueldo"></td>
+                            <td><input type="number" id="ventas"  name="ventas" placeholder="Ingrese ventas"></td>
+                            <td><input type="number" id="costo_total_ventas"  name="costo_total_ventas" placeholder="Costo total de ventas" disabled></td>  
+                            <td><input type="number" id="comisiones"     name="comisiones" placeholder="Comisiones" disabled></td>
+                            <td><input type="number" id="sueldo_con_comisiones"  name="sueldo_con_comisiones" placeholder="Sueldo con Comisiones" disabled></td>
+                            <td><button type="button" onclick="calcularComisiones()" class="btn-calcular" >Calcular</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </body>
+</html>

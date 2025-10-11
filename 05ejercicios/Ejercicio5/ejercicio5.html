@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/ejercicio5.js"></script>
+    <title>Cantidad de hombres y mujeres</title>
+</head>
+<body>
+   <div class="container">
+    <div class="container-title">
+        <h1>Cantidad de hombres y mujeres</h1>
+    </div>
+    <div class="container-body">
+        <form action="" >
+            <table class="tabla-porcentaje" cellspacing="8">
+                <tr>
+                    <td><label for="cantidadMujeres">Ingrese la cantidad de mujeres:</label></td>
+                    <td><input type="number" id="cantidadMujeres" name="cantidadMujeres" min="1" required></td>
+                </tr>
+                <tr>
+                    <td><label for="cantidadHombres">Ingrese la cantidad de hombres:</label></td>
+                    <td><input type="number" id="cantidadHombres" name="cantidadHombres" min="1" required></td>
+                </tr>
+               
+                <tr>
+                    <th>Porcentaje Mujeres</th>
+                    <th>Porcentaje Hombres</th>
+                </tr>
+                <tr>
+                    <td><input type="text" id="porcentajeMujeres" readonly></td>
+                    <td><input type="text" id="porcentajeHombres" readonly></td>
+                </tr>
+                 <tr>
+                    <td >
+                        <input type="button" value="Enviar" onclick="calcularPorcentaje()">
+                    </td>
+                </tr>
+            </table>
+        </form>
+   </div> 
+</body>
+</html>

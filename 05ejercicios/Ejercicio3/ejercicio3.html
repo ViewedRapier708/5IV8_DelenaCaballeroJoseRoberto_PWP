@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/ejercicio3.js"></script>
+        <title>Ejercicio 3</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="container-title">
+                <h1>Descuentos de productos</h1>
+            </div>
+            <div class="container-ejercicio">
+                <label for="">Producto</label>
+                <select name="" id="">
+                    <option value="" disabled selected>---Seleccione un producto---</option>
+                    <option value="shampoo" >Shampoo</option>
+                    <option value="jabón">Jabón</option>
+                    <option value="acondicionador">Acondicionador</option>
+                    <option value="crema">Crema</option>
+                    <option value="gel">Gel</option>
+                </select>
+                <label for="">Ingrese el precio del producto:</label>
+                <input type="number" id="precioOriginal" placeholder="Precio del producto">
+                <label for="">Precio del producto con un 15% de descuento:</label>
+                <input id="precioFinal" type="text" placeholder="Precio con descuento" readonly>
+                <button type="button" onclick="calcularDescuento()">Calcular</button>
+            </div>
+        </div>
+    </body>
+</html>
