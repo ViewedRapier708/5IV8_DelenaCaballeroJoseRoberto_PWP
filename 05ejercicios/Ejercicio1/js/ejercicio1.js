@@ -9,12 +9,16 @@ function ValidarNumeros(e) {
 function interes(){
     var valor =document.getElementById("cantidad").value;
     var parseo = parseFloat(valor)
-
-    
     var meses = document.getElementById("tiempo").value;
-    var interes =parseo * 0.02 * meses
+    if (meses >18) {
+        alert("El tiempo maximo es de 18 meses");
+        document.getElementById("tiempo").value = "";
+    }else{
+ var interes =parseo * 0.02 * meses
     var total = interes + parseo
     document.getElementById("saldoi").value = "$" + total;
+    }
+   
 }
  function borrari(){
      document.getElementById("saldoi").value = "";

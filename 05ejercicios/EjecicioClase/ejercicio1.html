@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicio 1</title>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
     <div class="container">
         <form method="post" name="formulario" action="">
-            <label for=""> Formulario para calculo de inversiones banco kawai
+            <label for="" class="Titulo"> Formulario para calculo de inversiones banco kawai
                 con un incremento de 8.05% anual
             </label>
             <br>
@@ -19,7 +20,7 @@
 
                     <tr>
                         <td>
-                            Introduce la cantidad que deceas invertir por un año|
+                            Introduce la cantidad que deceas invertir por un año
                         </td>
 
                         <td>
@@ -28,7 +29,7 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td><input type="button" value="Calcular_interes" name="enviar" onclick="interes()"></td>
+                        <td><input type="button" value="Calcular_interes" name="enviar" onclick="interes()" class="button"></td>
                     </tr>
                     <tr>
                         <td>Su saldo total con el interes es de :</td>
@@ -36,7 +37,7 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td><input type="button" name="borrar" value="Borrar Datos" onclick="borrari()"></td>
+                        <td><input class="button" type="button" name="borrar" value="Borrar Datos" onclick="borrari()"></td>
                     </tr>
                 </table>
 
