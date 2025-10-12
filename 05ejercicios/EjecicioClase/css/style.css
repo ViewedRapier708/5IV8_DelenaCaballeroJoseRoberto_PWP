@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-background: linear-gradient(to left, #055064, #0B4678);
+background: linear-gradient(to left, #1A2810, #2D4A1C);
  margin: 0;
  display: flex;
  text-align: center;
@@ -11,7 +11,7 @@ background: linear-gradient(to left, #055064, #0B4678);
 
 .container {
 
- background: linear-gradient(to right, #06287B, #096F8A);
+ background: linear-gradient(to right, #6f8d3b, #B1E275);
  padding: 20px;
  border-radius: 5px;
  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -52,7 +52,7 @@ background: linear-gradient(to left, #055064, #0B4678);
 }
 
 .button {
- background: linear-gradient(to right, #096F8A, #07815E);
+ background: linear-gradient(to right, #185538, #6f8d3b);
  border: 3px solid #0B4678;
  color: #ffffff;
  padding: 10px 15px;
@@ -61,7 +61,7 @@ background: linear-gradient(to left, #055064, #0B4678);
  font-size: 16px;    
 }   
 .button:hover {
- background: linear-gradient(to right, #07815E, #096F8A);
+ background: linear-gradient(to right ,#6f8d3b, #165035);
  transform: scale(1.1);
  transition: all 0.1s;
 }
