@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(to left, #055064, #0B4678);
+    background: linear-gradient(to left, #0A0C04, #1A2810);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,12 +9,12 @@ body {
 .container {
     display: inline;
     gap: 10px;
-    background: linear-gradient(to left, #096F8A, #06287B);
+    background: linear-gradient(to left, #2D4A1C, #4A7C2E);
     padding: 3rem;
     border-radius: 10px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: white;
-    box-shadow: 0px 0px 10px gray;
+    box-shadow: 0px 0px 10px #8BC34A;
 }
 
 #selector {
