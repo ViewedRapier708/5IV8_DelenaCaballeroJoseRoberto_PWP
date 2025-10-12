@@ -1,6 +1,6 @@
 body{
     display: flex;
-    background: linear-gradient(to right, #507782, #335675, #354877, #397c8e);
+    background: linear-gradient(41deg, #1aad6e, #12412b);
     justify-content: center;
     align-items: center;
     padding-top: 4rem;
@@ -10,10 +10,10 @@ body{
 }
 .container{
     text-align: center;
-    background: linear-gradient(to right, #055064, #0B4678);
+    background: linear-gradient(to right, #07815E, #1aad6e);
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0px 0px 40px #335e82;
+    box-shadow: 0px 0px 40px #12412b;
 }
 .container h1{
     color: aliceblue;
@@ -22,12 +22,13 @@ body{
     font-size: 50px;
 }
 td{
-    background-color: #107d9b;
+    background-color: #1aad6e;
     text-align: left;
     padding: .4rem;
 }
 th{
-    background-color: #507782;
+    background-color: #12412b;
+    color: white;
 }
 td p{
     color: aliceblue;
