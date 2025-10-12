@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #e0e0e0;
+    background-color: #055064;
     margin: 0;
     padding: 20px;
     display: flex;
@@ -32,7 +32,7 @@ body {
     white-space: nowrap;
 }
 .btn-calcular {
-    background-color: #4CAF50;
+    background-color: #0B4678;
     color: white;
     padding: 10px 15px;
     border: none;
@@ -40,7 +40,7 @@ body {
     cursor: pointer;
 }
 .btn-calcular:hover {
-   background-color: #45a049;
+   background-color: #06287B;
   transform: scale(1.1);      
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);  
 }
