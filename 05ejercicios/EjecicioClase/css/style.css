@@ -1,72 +1,71 @@
 body {
     font-family: Arial, sans-serif;
-   background: linear-gradient(to left, #808481, #555656);
-    margin: 0;
-    display: flex;
-    text-align: center;
-    align-items: center;
-    flex-direction: column;
-    padding-top: 20rem;
+background: linear-gradient(to left, #055064, #0B4678);
+ margin: 0;
+ display: flex;
+ text-align: center;
+ align-items: center;
+ flex-direction: column;
+ padding-top: 20rem;
 }
 
 .container {
- 
-    max-width: 600px;
-    background: linear-gradient(to right, #69E9D1, #6BD680);
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+ background: linear-gradient(to right, #06287B, #096F8A);
+ padding: 20px;
+ border-radius: 5px;
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .container-table {
-    margin-top: 20px;
+ margin-top: 20px;
 }
 
 .table {
-    width: 100%;
-    border-collapse: collapse;
-    border-radius: 10px;
+ width: 100%;
+ border-collapse: collapse;
+ border-radius: 10px;
 }
 
 .table td {
-    padding: 10px;
-    border: 3px solid #080707;
-    background-color: #E6E6E6;
-    text-align: center;
-    font-size: 18px;
-    font-weight: bold;  
-    color: #333;
-    font-family: 'Courier New', Courier, monospace;
+ padding: 10px;
+ border: 3px solid #07815E;
+ background-color: #E6E6E6;
+ text-align: center;
+ font-size: 18px;
+ font-weight: bold;  
+ color: #333;
+ font-family: 'Courier New', Courier, monospace;
 }
 
 #cantidad {
-    width: 12rem;
-    height: 1.4rem;
-    border-radius: 4px;
-    border: #080707 3px solid;
+ width: 12rem;
+ height: 1.4rem;
+ border-radius: 4px;
+ border: #07815E 3px solid;
 }
 #saldoi {
-    width:12rem;
-    height: 1.4rem;
-    border-radius: 4px;
-    border: #080707 3px solid;
+ width:12rem;
+ height: 1.4rem;
+ border-radius: 4px;
+ border: #07815E 3px solid;
 }
 
 .button {
-    background-color: #69E9D1;
-    border: 3px solid #080707;
-    color: rgb(15, 12, 12);
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;    
+ background: linear-gradient(to right, #096F8A, #07815E);
+ border: 3px solid #0B4678;
+ color: #ffffff;
+ padding: 10px 15px;
+ border-radius: 5px;
+ cursor: pointer;
+ font-size: 16px;    
 }   
 .button:hover {
-    background-color: #6BD680;
-    transform: scale(1.05);
-
-    transition: all 0.3s ease;
+ background: linear-gradient(to right, #07815E, #096F8A);
+ transform: scale(1.1);
+ transition: all 0.1s;
 }
+
 .button:active {
     transform: scale(0.95);
     transition: all 0.1s ease;
@@ -77,6 +76,6 @@ form .Titulo {
     margin-top: 10px;
     font-size: 24px;
     font-weight: bold;
-    color: #333;
+    color: #f9f9f9;
     
 }
