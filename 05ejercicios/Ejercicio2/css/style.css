@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #055064;
+    background-color: #0A0C04;
     margin: 0;
     padding: 20px;
     display: flex;
@@ -8,8 +8,8 @@ body {
     padding-top: 10rem;
 }
 .container-main {
-
-    background-color: #ffffff;
+    color: white;
+    background-color: #1A2810;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -18,13 +18,13 @@ body {
 }
 
 .problema-table {
-    background-color: #f4f4f4;
-    border: 1px solid #0c0b0b;
+    background-color: #2D4A1C;
+    border: 1px solid #8BC34A;
     padding: 10px;
     overflow-x: auto;
 }
 .problema-table th, .problema-table td {
-    border: 1px solid #535151;
+    border: 1px solid #4A7C2E;
     padding: 8px;
     text-align: left;
     text-align: center;
@@ -32,7 +32,7 @@ body {
     white-space: nowrap;
 }
 .btn-calcular {
-    background-color: #0B4678;
+    background-color: #4A7C2E;
     color: white;
     padding: 10px 15px;
     border: none;
@@ -40,11 +40,11 @@ body {
     cursor: pointer;
 }
 .btn-calcular:hover {
-   background-color: #06287B;
+   background-color: #2D4A1C;
   transform: scale(1.1);      
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);  
 }
 .btn-calcular:active {
     transform: scale(0.9);         
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  
-}   
+}
