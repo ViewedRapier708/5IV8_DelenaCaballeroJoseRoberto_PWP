@@ -1,6 +1,6 @@
 body{
     font-family: Arial, sans-serif;
-   background: linear-gradient(to left, #06287B, #0B4678);
+   background: linear-gradient(to left, #0A0C04, #1A2810);
     margin: 0;
     display: flex;
     text-align: center;
@@ -10,7 +10,7 @@ body{
 }
 .container{
 
-    background-color:#096F8A ;
+    background-color:#2D4A1C ;
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0px 0px 12px black;
@@ -21,22 +21,22 @@ body{
 .table td {
  padding: 10px;
     border: none;
- background-color: #E6E6E6;
+ background-color: #8BC34A;
  text-align: center;
  font-size: 18px;
  font-weight: bold;  
- color: #333;
+ color: #0A0C04;
  font-family: 'Courier New', Courier, monospace;
 }
 
 .form .Titulo{
 font-size: 20px;
-color: #E6E6E6;
+color: #8BC34A;
 font-weight: bold;
 }
 
 .button{
-    background-color: #096F8A;
+    background-color: #4A7C2E;
     border-radius: 4px;
     height: 2rem;
     width: 10rem;
