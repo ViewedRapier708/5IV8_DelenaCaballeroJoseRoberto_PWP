@@ -3,11 +3,11 @@ body{
     flex-direction: column;
     align-items: center;
     padding: 10rem;
-  background: linear-gradient(to left, #055064, #0B4678);
+  background: linear-gradient(to left, #0A0C04, #1A2810);
 }
 .container{
     border-radius: 10px;
-    background:linear-gradient(to left ,#0B4678,#055064) ;
+    background:linear-gradient(to left ,#2D4A1C,#4A7C2E) ;
     padding: 30px;
     box-shadow: 0px 0px 20px rgb(0, 0, 0);
     transition: transform 0.9s ease;
@@ -37,7 +37,7 @@ input{
 #calificacionTotal{
     height:2rem;
     border-radius: 4x;
-    color: #000000;
+    color: #0A0C04;
     font-size: 20px;
     font-weight: bold;
 }
@@ -50,8 +50,8 @@ button{
     width: 10rem;
 }
 button:hover{
-    background-color: #0a7b9a;
+    background-color: #5d8f39;
 }
 button:active{
-background-color: #5b98a9;
+background-color: #8BC34A;
 }
