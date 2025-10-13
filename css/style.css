@@ -54,7 +54,7 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 40rem;
+    height: auto;
     width: 70rem;
     background: linear-gradient(135deg, #12412b, #1aad6e, #b1e275);
     box-shadow: 8px 8px 20px rgba(18, 21, 7, 0.6);
