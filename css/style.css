@@ -105,6 +105,7 @@ table {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(18, 21, 7, 0.4);
+    height: 80%;
 }
 
 #Homero {

@@ -6,6 +6,7 @@ function ejercicio1() {
         alert("Favor de ingresar numeros ");
         return;
     }
+    
     var resultado;
 
     if (num1 === num2) {
