@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./funcionesEjercicios/ejercicios.js"></script>
+    <script src="./funcionesEjercicios/validaciones.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Ejercicios</title>
+</head>
+<body>
+    <div class="ejercicios-container">
+        <h2>Ejercicio 1</h2>
+        <p>Descripción del ejercicio 1:<br>
+            Deberán de crear un formulario en el cual se deben de leer 2 números, si son iguales que los múltiple, si el
+            primero mayor que el segundo que los reste y sino que los sume.
+        </p>
+        <div class="ejercicio">
+            <form action="" id="form1">
+                <input type="text" id="resultado" placeholder="Resultado" readonly>
+                <input type="text" id="num1" placeholder="Número 1" onkeypress="return ValidarNumeros(event)">
+                <input type="text" id="num2" placeholder="Número 2" onkeypress="return ValidarNumeros(event)">
+                <button type="button" onclick="ejercicio1()">Calcular</button>
+                <button type="button" onclick="Limpiarcampos('form1')">Limpiar</button>
+            </form>
+
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="ejercicios-container">
+        <h2>Ejercicio 2</h2>
+        <p>Descripción del ejercicio 2:Leer tres números diferentes e imprimir el numero mayor de los 3.<br>
+        </p>
+        <div class="ejercicio">
+            <form action="" id="form2">
+                <input type="text" id="resultado2" placeholder="Resultado" readonly>
+                <input type="text" id="num21" placeholder="Número 1" onkeypress="return ValidarNumeros(event)">
+                <input type="text" id="num22" placeholder="Número 2" onkeypress="return ValidarNumeros(event)">
+                <input type="text" id="num23" placeholder="Número 3" onkeypress="return ValidarNumeros(event)">
+                <button type="button" onclick="ejercicio2()">Calcular</button>
+                <button type="button" onclick="Limpiarcampos('form2')">Limpiar</button>
+            </form>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="ejercicios-container">
+        <h2>Ejercicio 3</h2>
+        <p>Descripción del ejercicio 3:<br>Determinar la cantidad de dinero que recibe un trabajador por concepto de hrs
+            extra trabajadas dentro de la empresa, sabiendo que cuando las horas de trabajo exceden de 40, el resto se
+            consideran hrs extra, y que estas se pagan al doble de una hora normal, cuando no exceden de 8, si las hrs
+            extra exceden de 8 se pagan las primeras 8 al doble y el resto al triple.
+        </p>
+        <div class="ejercicio">
+            <form action="" id="form3">
+                <input type="text" id="resultado3" placeholder="Resultado" readonly>
+                <input type="text" id="hrsTrabajadas" placeholder="Horas Trabajadas" onkeypress="return ValidarNumeros(event)">
+                <input type="text" id="pagoHora" placeholder="Pago por Hora" onkeypress="return ValidarNumeros(event)">
+                <button type="button" onclick="ejercicio3()">Calcular</button>
+                <button type="button" onclick="Limpiarcampos('form3')">Limpiar</button>
+            </form>
+        </div>
+
+    </div>
+    <br>
+    <br>
+    <div class="ejercicios-container">
+        <h2>Ejercicio 4</h2>
+        <p>Descripción del ejercicio 4:<br>Calcular la utilidad de un trabajador que recibe le reparto de utilidades
+            anual, si este se le asigna un porcentaje de acuerdo a su salario mensual y depende de la antigüedad de la
+            empresa menos de 1 año 5%
+1 a 2 años 7%
+2 a 5 años 10 %
+5 a 10 años 15%
+mas de 10 20%
+
+
+        </p>
+        <div class="ejercicio">
+            <form action="" id="form4">
+                <input type="text" id="utilidades" placeholder="Utilidades" readonly>
+                <input type="text" id="salarioMensual" placeholder="Salario Mensual" onkeypress="return ValidarNumeros(event)">
+                <input type="text" id="antiguedad" placeholder="Antigüedad (años)" onkeypress="return ValidarNumeros(event)">
+
+                <button type="button" onclick="ejercicio4()">Calcular</button>
+                <button type="button" onclick="Limpiarcampos('form4')">Limpiar</button>
+            </form>
+        </div>
+
+    </div>
+</body>
+
+</html>
