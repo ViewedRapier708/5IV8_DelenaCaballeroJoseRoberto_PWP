@@ -132,8 +132,10 @@ function moverDireccion(direccion) {
         }
 }
 function intercambiarPosiciones(fila, columna, fila2, columna2){
+
     var pieza1= rompe[fila,columna];
     var pieza2 = rompe[fila2, columna2];
+    
 
     //intercambio
 
