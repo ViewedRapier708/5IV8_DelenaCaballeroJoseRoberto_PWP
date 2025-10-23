@@ -69,15 +69,15 @@ function mostrarCartelGanador(){
     //intercambiar
     posicion[][] = arreglo[][]
 */
-
+//Error los indices del arreglo esta mal ya que solo se toma como un arreglo unidimensional y no como una matriz
 function intercambiarPosicionesrompe(filaPos1, columnaPos1, filaPos2, columnaPos2){
-    var pos1 = rompe[filaPos1,columnaPos1];
-    var pos2 = rompe[filaPos2, columnaPos2];
+    var pos1 = rompe[filaPos1][columnaPos1];
+    var pos2 = rompe[filaPos2][columnaPos2];
 
     //intercambio
 
-    rompe[filaPos1, columnaPos1] = pos2;
-    rompe[filaPos2, columnaPos2] = pos1;
+    rompe[filaPos1][columnaPos1] = pos2;
+    rompe[filaPos2][columnaPos2] = pos1;
 }    
 
 function iniciar(){
