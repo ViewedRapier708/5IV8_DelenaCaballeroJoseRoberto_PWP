@@ -22,8 +22,8 @@ var rompeCorrecta = [
 ];
 
 //necesito saber las coordenadas de la pieza vacia, la que se va a mover
-var filaVacia = 2;
-var columnaVacia = 2;
+var filavacia = 2;
+var columnavacia = 2;
 
 //necesitamos ahora si una funcion que se encargue de mostrar las instrucciones
 
