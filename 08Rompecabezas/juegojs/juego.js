@@ -22,8 +22,8 @@ var rompeCorrecta = [
 ];
 
 //necesito saber las coordenadas de la pieza vacia, la que se va a mover
-var filavacia = 2;
-var columnavacia = 2;
+var filaVacia = 2;
+var columnaVacia = 2;
 
 //necesitamos ahora si una funcion que se encargue de mostrar las instrucciones
 
@@ -88,7 +88,7 @@ function iniciar(){
 }
 function actualizarPosiscionVacia(nuevaFila,nuevaColumna){
     filaVacia= nuevaFila
-    columnavacia=nuevaColumna
+    columnaVacia=nuevaColumna
 }
 function posicionValida(fila,columna){
     return (fila >= 0  && fila <=2 && columna >=0 && columna <=2);
@@ -128,7 +128,7 @@ function moverDireccion(direccion) {
             intercambiarPosiciones(filaVacia, columnaVacia, nuevaFilaVacia, nuevaColumnaVacia);
             actualizarPosiscionVacia(nuevaFilaVacia, nuevaColumnaVacia);
             //Tengo que guardar el ultimo movimiento 
-            agregarUltimoMovimiento(direccion);
+            actualizarUltimoMovimiento(direccion);
         }
 }
 
