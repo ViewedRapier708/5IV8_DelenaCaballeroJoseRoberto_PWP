@@ -58,18 +58,19 @@ function ejercicio3() {
 function ejercicio4() {
     var salarioMensual = parseFloat(document.getElementById("salarioMensual").value);
     var antiguedad = parseFloat(document.getElementById("antiguedad").value);
+    var antiguedadAnios = antiguedad / 12;
     if (isNaN(salarioMensual) || isNaN(antiguedad)) {
         alert("Favor de ingresar numeros ");
         return;
     }
     var porcentaje = 0;
-    if (antiguedad < 1) {
+    if (antiguedadAnios < 1) {
         porcentaje = 0.05;
-    } else if (antiguedad < 2) {
+    } else if (antiguedadAnios < 2) {
         porcentaje = 0.07;
-    } else if (antiguedad < 5) {
+    } else if (antiguedadAnios < 5) {
         porcentaje = 0.10;
-    } else if (antiguedad < 10) {
+    } else if (antiguedadAnios < 10) {
         porcentaje = 0.15;
     } else {
         porcentaje = 0.20;
