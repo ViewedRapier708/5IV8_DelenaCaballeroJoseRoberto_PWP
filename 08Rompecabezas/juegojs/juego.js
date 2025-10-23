@@ -131,11 +131,13 @@ function moverDireccion(direccion) {
             agregarUltimoMovimiento(direccion);
         }
 }
-function intercambiarPosiciones(fila, columna, fila2, columna2){
 
-    var pieza1= rompe[fila,columna];
-    var pieza2 = rompe[fila2, columna2];
-    
+
+function intercambiarPosiciones(fila, columna, fila2, columna2){
+//Error en los indices del arreglo esta mal ya que solo se toma como un arreglo unidimensional y no como una matriz
+    var pieza1= rompe[fila][columna];
+    var pieza2 = rompe[fila2][columna2];
+
 
     //intercambio
 
