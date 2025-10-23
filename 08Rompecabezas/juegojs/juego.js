@@ -181,7 +181,6 @@ function actualizarUltimoMovimiento(direccion) {
 }
 function mezclarPiezas(veces){
     if(veces <=0){
-        alert("Asi no se puede");
         return;
     }
     var direcciones = [codigosDireccion.ABAJO, codigosDireccion.ARRIBA, codigosDireccion.DERECHA, codigosDireccion.IZQUIERDA];
