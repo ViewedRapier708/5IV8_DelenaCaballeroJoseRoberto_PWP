@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visor de Cartas Pokémon 3D</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="background-overlay"></div>
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+
+    <div class="main-container">
+        <div class="header">
+            <h1>Api de pokemon de cartas</h1>
+            <p>Buscar pokemon</p>
+        </div>
+        <!-- Búsqueda PokéAPI -->
+        <hr style="margin:28px 0; border-color: rgba(255,255,255,0.08)">
+        <div class="search-box">
+            <div class="input-container">
+                <input type="text" id="searchPokemonInput" placeholder="Buscar Pokémon por nombre o ID...">
+            </div>
+            <button id="searchPokemonBtn">Buscar Pokémon</button>
+        </div>
+
+        <div id="pokeResult"></div>
+    </div>
+
+    <script src="./api.js"></script>
+</body>
+</html>
