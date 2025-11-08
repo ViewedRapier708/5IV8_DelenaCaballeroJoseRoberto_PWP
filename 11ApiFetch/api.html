@@ -5,74 +5,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejemplo de Pokedex</title>
     <link rel="stylesheet" href="./styles.css">
-    <script src="https://kit.fontawesome.com/101326ea39.js"></script>
+    <script src="https://kit.fontawesome.com/101326ea39.js" ></script>
 </head>
 <body>
-    <section class="half">
-        <div class="d-flex center-flex">
-            <input type="text" id="pokemonName" class="lcd-input" placeholder="Ingrese el nombre del Pokémon">
-            <input type="hidden" id="pokemonID" value="0">
-            <button id="btnSearch" class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-            <div class="columns-elementos">
-                <button class="btn" id="btnUp"><i class="fa-solid fa-caret-up"></i></button>
-            </div>
-            <div class="columns-elementos">
-                <button class="btn" id="btnDown"><i class="fa-solid fa-caret-down"></i></button>
+    <section class="half" >
+        <div class="d-flex center-flex" >
+            <input type="text" id="pokemonName" class="lcd-input" placeholder="Ingrese el nombre del Pokémon" />
+            <input type="hidden" id="pokemonId" value="0">
+            <button id="btnSearch" class="btn" > <i class="fa-solid fa-magnifying-glass" ></i> </button>
+            <div class="columns-elements" >
+                <button class="btn" id="btnUp" > <i class="fa-solid fa-caret-up" ></i> </button>
+                <button class="btn" id="btnDown" > <i class="fa-solid fa-caret-down" ></i> </button>
             </div>
         </div>
-        <div id="pokedisplay-container" class="d-flex center-flex pokedisplay-container">
+        <div id="pokedisplay-container" class="d-flex center-flex pokedisplay-container" >
             <img class="pokedisplay" src="./img/pokeball.png" alt="Pokedisplay">
+
         </div>
     </section>
-    <section id="pokemonData" class="half">
-        <h3 id="pokemonNameResult" class="center-flex"></h3>
-        <div class="center-flex">
-            <div>Tipo de pokemon: </div>
-            <div id="pokemos-types-container"></div>
+    <section id="pokemonData" class="half" >
+        <h3 id="pokemonNameResult" class="center-flex" ></h3>
+        <div class="center-flex" >
+            <div>Tipo de pokemon:</div>
+            <div id="pokemonTypes" class="pokemon-types-container" ></div>
+
         </div>
-        <table class="pokemon-stat-table">
+        <table class="pokemon-stat-table" > 
             <thead>
                 <tr>
-                    <td colspan="6">Estadisticas Base</td>
+                    <td colspan="6" >Estadisticas Base</td>
                 </tr>
                 <tr>
-                    <td>HP: </td>
-                    <td>Ataque: </td>
-                    <td>Defensa: </td>
-                    <td>Ataque Especial: </td>
-                    <td>Defensa Especial: </td>
-                    <td>Velocidad: </td>
+                    <td>HP</td>
+                    <td>Attack</td>
+                    <td>Defense</td>
+                    <td>Special Attack</td>
+                    <td>Special Defense</td>
+                    <td>Speed</td>
                 </tr>
             </thead>
-            <tbody id="pokemonStats">
+            <tbody id="pokemonStats" >
                 <tr>
-                    <td class="pokemonStat" id="pokemonStatHP">0</td>
-                    <td class="pokemonStat" id="pokemonStatAttack">0</td>
-                    <td class="pokemonStat" id="pokemonStatDefense">0</td>
-                    <td class="pokemonStat" id="pokemonStatSpecialAttack">0</td>
-                    <td class="pokemonStat" id="pokemonStatSpecialDefense">0</td>
-                    <td class="pokemonStat" id="pokemonStatSpeed">0</td>
-                
+                    <td class="pokemon-stat" id="pokemonStatHp" >0</td>
+                    <td class="pokemon-stat" id="pokemonStatAttack" >0</td>
+                    <td class="pokemon-stat" id="pokemonStatDefense" >0</td>
+                    <td class="pokemon-stat" id="pokemonStatSpecialAttack" >0</td>
+                    <td class="pokemon-stat" id="pokemonStatSpecialDefense" >0</td>
+                    <td class="pokemon-stat" id="pokemonStatSpeed" >0</td>
                 </tr>
             </tbody>
         </table>
-        <div class="row center-flex">
-            <div class="row-element">
+        <div class="row center-flex" >
+            <div class="row-element" >
                 Movimientos:
-                <ul id="pokemonMoves">
-
-                </ul>
+                <ul id="pokemonMoves" ></ul>
             </div>
-            <div class="row-element">
+            <div class="row-element" >
                 Habilidades:
-                <ul id="pokemonAbilities">
-
-                </ul>
+                <ul id="pokemonAbilities" ></ul>
             </div>
         </div>
+
     </section>
-    <div>
-        <a href="../index.html" style="border-radius: 10px; padding: 10px 15px; background-color: #007bff; color: white; text-decoration: none;">Regresar</a>
-    </div>
+
+    <script src="./js/fetch.js"></script>
 </body>
 </html>
