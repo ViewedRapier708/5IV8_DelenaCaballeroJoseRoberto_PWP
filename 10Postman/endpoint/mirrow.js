@@ -40,4 +40,4 @@ const mirrow = (req, res) => {
         res.json({ruta_consumida : req.originalUrl ,...requestMethod})
     }
 };
-module.exports =mirrow
+export default mirrow;
