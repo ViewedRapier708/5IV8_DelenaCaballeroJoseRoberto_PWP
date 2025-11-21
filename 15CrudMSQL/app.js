@@ -1,60 +1,113 @@
-/*Vamos a crear un cliente servidor para un crud
-Para esto debemos de probar si el modulo de mysql debe de estar verificado si no utilizaremos mysql2
+/*
+Vamos a crear un cliente servidor para un crud
+Para esto tenemos que probar si el modulo de mysql esta verificado
+sino utilizaremos mysql2
 */
-const express= require('express');
+
+const express = require('express');
 const mysql = require('mysql2');
 const bodyParser = require('body-parser');
 const ejs = require('ejs');
-const app  = express();
-const port =3000;
-
-//Configuracion de mysql
-
-const db =mysql.createConnection({host:'localhost',user:'root',password:'n0m3l0', database:'estudiantescecyt'})
-//tenemos que configurar nuestro middleware el cual estaremos usando rutas y codificacion de la informacion por json
-
-app.use(bodyParser.urlencoded({extended:true}));
-app.use(bodyParser.json());
-app.set('view engine','ejs');
-//Donde se encuentra el directorio de dichas vistas
-app.set('views',__dirname + '/views');
-db.connect((error)=>{
-if (error) {
-    console.log('El error de conexion es: '+error);
-}
-console.log('Conexion exitosa a la base de datos');
-})
-//Tenemos que configurar las vistas que se van a ejecutar 
-
-
-//Para la carga de imagenes css multimedia etc es necesario configurar una carpeta publica en la cual se van a encontrar estos archivos
-
-
-app.use(express.static('__dirname + /css'));
-
-//Vamos a crear el crud de estudiantes a partir de rutas
-
-//Ruta para crear un estudiante
-app.post('/estudiantes',(req,res)=>{
-
-
-})
-//Ruta para mostrar el formulario y la lista de estudiantes
-app.get('/',(req,res)=>{
-    //Necesito obtener la lista de estudiantes desde la db
-    const sql = 'SELECT * FROM estudiantes';
-    db.query(sql,(error,results)=>{
-        if (error) {
-            console.log('El error al traer los estudientes es: '+error);
-
-        }
-        //console.log(results);
-        res.render('index',{estudiantes:results});
-    })
+require('dotenv').config({path: './.env'});
+const app = express();
+const port = 3100;
+console.log(process.env.DB_user);
+//configuracion de mysql
+const bd = mysql.createConnection({
+    
+    host: process.env.BD_HOST,
+    user: process.env.BD_USER,
+    password: process.env.BD_PASSWORD,
+    database: process.env.BD_NAME
+});
+bd.connect((error) => {
+    if (error) {
+        console.log('Error de conexion a la base de datos: ' + error);
+    } else {
+        console.log('Conexion exitosa a la base de datos');
+    }
 });
 
+//tenemos que configurar nuestro middleware, el cual estaremos usando rutas y codificacion de la informacion por json
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
+//tenemos que configurar las vistas que se van ejecutar
+app.set('view engine', 'ejs');
+//donde se encuentra el directorio de dichas vistas
+app.set('views', __dirname + '/views');
 
-app.listen(port,()=>{
-    console.log(`Servidor ejecutandose en el puerto ${port}`);
+//para la carga de imagenes, css, multimedia, etc es necesario configurar una carpeta public, en la cual todos los recursos del proyecto se podran consumir
+app.use(express.static(__dirname + '/css'));
+
+//vamos a crear el crud de estudiantes a partir de rutas
+
+//ruta get para mostrar el formulario y la lista de estudiantes
+app.get('/', (req, res)=>{
+    //necesito obtener la lista de estudiantes desde la base de datos
+    const querry = 'SELECT * FROM estudiantes';
+    bd.query(querry, (error, resultados)=>{
+        if(error){
+            console.log('Error al obtener los estudiantes: ' + error);
+            res.status(500).send('Error al obtener los estudiantes');
+        }
+        res.render('index', { estudiantes: resultados });
+        
+    });
+});
+
+//ruta para crear un estudiante
+app.post('/estudiantes', (req, res) => {
+    //obtener los parametros del formulario
+    const { nombre, edad, curso } = req.body;
+    console.log(req.body);
+    const querry = `INSERT INTO estudiantes (nombre, edad, curzo) VALUES ('${nombre}', ${edad}, '${curso}');`;
+    bd.query(querry, (error, resultados) => {
+        if (error) {
+            console.log('Error al crear el estudiante: ' + error);
+            res.status(500).send('Error al crear el estudiante');
+        }
+        res.redirect('/');
+    });
+});
+//Ruta para eliminar un estudiante
+app.get('/estudiantes/delete/:id', (req, res) => {
+    const estudianteId = req.params.id;
+    const querry = `DELETE FROM estudiantes WHERE id = ${estudianteId};`;
+    bd.query(querry, (error, resultados) => {
+        if (error) {
+            console.log('Error al eliminar el estudiante: ' + error);
+            res.status(500).send('Error al eliminar el estudiante');
+        }
+        res.redirect('/');
+    });
+})
+//Ruta para buscar y actualizar al estudiante
+app.get('/estudiantes/edit/:id', (req, res) => {
+    const estudianteId = req.params.id;
+    const querry = `SELECT * FROM estudiantes WHERE id = ${estudianteId};`;
+    bd.query(querry, (error, resultados) => {
+        if (error) {
+            console.log('Error al obtener el estudiante: ' + error);
+            res.status(500).send('Error al obtener el estudiante');
+        }
+        res.render('edit', { estudiante: resultados[0] });
+    });
+
+});
+app.post('/estudiantes/update/:id', (req, res) => {
+    const estudianteId = req.params.id;
+    const { nombre, edad, curso } = req.body;
+    const querry = `UPDATE estudiantes SET nombre='${nombre}', edad=${edad}, curzo='${curso}' WHERE id = ${estudianteId};`;
+    bd.query(querry, (error, resultados) => {
+        if (error) {
+            console.log('Error al actualizar el estudiante: ' + error);
+            res.status(500).send('Error al actualizar el estudiante');
+        }
+        res.redirect('/');
+    });
+});
+
+app.listen(port, () => {
+    console.log(`Servidor corriendo en http://localhost:${port}`);
 });
