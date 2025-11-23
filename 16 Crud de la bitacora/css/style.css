@@ -84,3 +84,29 @@ ul li a {
 ul li a:hover {
     text-decoration: underline;
 }
+  .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(3px); /* Difumina el fondo */
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* ----- CAJA DEL MODAL ----- */
+        .modal-contenido {
+            background: #fff;
+            width: 350px;
+            padding: 20px;
+            border-radius: 15px;
+            opacity: 0;
+            transform: scale(0.6);
+            transition: 0.25s ease; /* Animación */
+        }
+
+        /* ----- CUANDO EL MODAL ESTÁ ACTIVO (ANIMACIÓN) ----- */
+        .modal.show .modal-contenido {
+            opacity: 1;
+            transform: scale(1);
+        }

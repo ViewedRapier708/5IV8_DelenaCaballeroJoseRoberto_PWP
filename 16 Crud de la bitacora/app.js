@@ -20,10 +20,10 @@ console.log(process.env.DB_user);
 //configuracion de mysql
 const bd = mysql.createConnection({
     
-    host: process.env.BD_HOST,
-    user: process.env.BD_USER,
-    password: process.env.BD_PASSWORD,
-    database: process.env.BD_NAME
+    host: process.env.BD_HOST || 'localhost',
+    user: process.env.BD_USER || 'root',
+    password: process.env.BD_PASSWORD || 'n0m3l0',
+    database: process.env.BD_NAME || 'bd_mantenimiento_correctivo'
 });
 bd.connect((error) => {
     if (error) {
