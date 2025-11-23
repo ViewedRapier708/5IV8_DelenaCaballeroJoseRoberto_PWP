@@ -5,31 +5,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Estudiantes</title>
-    <link rel="stylesheet" href="/16 Crud de la bitacora/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
     <h1>Registros</h1>
     <button onclick="abrirModal()">Crear Nuevo Registro</button>
-    <ul>
-        <% registros.forEach(function(registro) { %>
-            <li><strong>
-                    <%= registro.Id_equipo %>
-                </strong>
-
-                (Fecha y hora del reporte: <%= registro.Fecha_y_hora_reporte %>,
-                    Sintoma reportado: <%= registro.Sintoma_reportado %>,
-                    Diagnostico: <%= registro.Diagnostico %>,
-                    Accion correctiva: <%= registro.Accion_correctiva %>,
-                    Piezas remplazadas: <%= registro.Piezas_remplazadas %>,
-                    Tiempo de inactividad: <%= registro.Tiempo_de_inactividad %>
-                    )
-                        <a href="/estudiantes/edit/<%= registro.Id_registro
-                 %>">Editar</a>
-                        <a href="/estudiantes/delete/<%= registro.Id_registro %>">Eliminar</a>
-            </li>
-            <% }) ;%>
-    </ul>
+    <div class="tabla-registros">
+    <table class="">
+        <thead>
+            <tr>
+                <th>Id de equipo</th>
+                <th>Fecha y hora del reporte</th>
+                <th>Síntoma reportado</th>
+                <th>Diagnóstico</th>
+                <th>Acción correctiva</th>
+                <th>Piezas remplazadas</th>
+                <th>Tiempo de inactividad</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% registros.forEach(function(registro) { %>
+                <tr>
+                    <td><%= registro.Id_equipo %></td>
+                    <td><%= registro.Fecha_y_hora_reporte %></td>
+                    <td><%= registro.Sintoma_reportado %></td>
+                    <td><%= registro.Diagnostico %></td>
+                    <td><%= registro.Accion_correctiva %></td>
+                    <td><%= registro.Piezas_remplazadas %></td>
+                    <td><%= registro.Tiempo_de_inactividad %></td>
+                    <td>
+                        <a href="/crearReporte/edit/<%= registro.Id_registro %>">Editar</a>
+                        <a href="/crearReporte/delete/<%= registro.Id_registro %>">Eliminar</a>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+    </div>
     <div id="modal" class="modal">
         <div class="modal-contenido">
             <span class="cerrar" onclick="cerrarModal()">&times;</span>

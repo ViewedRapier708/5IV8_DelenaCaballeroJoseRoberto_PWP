@@ -109,7 +109,8 @@ app.post('/crearReporte', (req, res) => {
 //Ruta para eliminar un estudiante
 app.get('/crearReporte/delete/:id', (req, res) => {
     const idregistro = req.params.id;
-    const querry = `DELETE FROM bitacora_de_mantenimiento_correctivo WHERE id = ${idregitro};`;
+    console.log('ID del registro a eliminar: ' + idregistro);//Depuracion
+    const querry = `DELETE FROM bitacora_de_mantenimiento_correctivo WHERE Id_registro = ${idregistro};`;
     bd.query(querry, (error, resultados) => {
         if (error) {
             console.log('Error al eliminar el registro: ' + error);//Depuracion
