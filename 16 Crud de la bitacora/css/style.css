@@ -64,6 +64,7 @@ form button:hover {
     background: #ffffff;
     border-radius: 8px;
     overflow-y: scroll;
+    overflow-x: hidden;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px ;
 }
@@ -82,17 +83,32 @@ th, td {
             backdrop-filter: blur(3px); /* Difumina el fondo */
             justify-content: center;
             align-items: center;
+            overflow-y: auto;
         }
 
         /* ----- CAJA DEL MODAL ----- */
         .modal-contenido {
             background: #fff;
-            width: 350px;
-            padding: 20px;
+            width: 95vw;
+            max-width: 400px;
+            min-width: 260px;
+            padding: 16px;
             border-radius: 15px;
             opacity: 0;
             transform: scale(0.6);
-            transition: 0.25s ease; /* Animación */
+            transition: 0.25s ease;
+            box-sizing: border-box;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        @media (min-width: 600px) {
+            .modal-contenido {
+                width: 35vw;
+                max-width: 500px;
+                min-width: 320px;
+                max-height: 80vh;
+            }
         }
 
         /* ----- CUANDO EL MODAL ESTÁ ACTIVO (ANIMACIÓN) ----- */
@@ -131,4 +147,15 @@ th, td {
         .btn-secondary {
             background: #e0e0e0;
             color: #222;
+        }
+        .btn-primary{
+    background-color: #1976d2;
+    color: white;
+    border-radius: 10px;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    position: relative;
+
         }

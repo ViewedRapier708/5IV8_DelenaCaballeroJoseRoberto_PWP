@@ -79,7 +79,7 @@ app.post('/crearReporte', (req, res) => {
         !Id_equipo || !Sintoma_reportado || !Diagnostico ||
         !Accion_correctiva || !Piezas_remplazadas || !Tiempo_de_inactividad
     ) {
-        return res.status(400).send('Faltan datos obligatorios para crear el reporte');
+        return res.status(400).send(alert('Todos los campos son obligatorios'));
     }
 
     // Opcional: Validación de tipos de datos (ejemplo para Id_equipo y Tiempo_de_inactividad)
