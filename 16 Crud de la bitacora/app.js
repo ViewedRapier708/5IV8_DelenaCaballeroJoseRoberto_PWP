@@ -13,6 +13,7 @@ const express = require('express');
 const mysql = require('mysql2');
 const bodyParser = require('body-parser');
 const ejs = require('ejs');
+const path = require('path');
 require('dotenv').config({path: './.env'});
 const app = express();
 const port = 3100;
@@ -23,7 +24,7 @@ const bd = mysql.createConnection({
     host: process.env.BD_HOST || 'localhost',
     user: process.env.BD_USER || 'root',
     password: process.env.BD_PASSWORD || 'n0m3l0',
-    database: process.env.BD_NAME || 'bd_mantenimiento_correctivo'
+    database: process.env.BD_NAME || 'bitacora'
 });
 bd.connect((error) => {
     if (error) {
@@ -40,10 +41,12 @@ app.use(bodyParser.json());
 //tenemos que configurar las vistas que se van ejecutar
 app.set('view engine', 'ejs');
 //donde se encuentra el directorio de dichas vistas
-app.set('views', __dirname + '/views');
+// donde se encuentra el directorio de dichas vistas
+app.set('views', path.join(__dirname, 'views'));
 
-//para la carga de imagenes, css, multimedia, etc es necesario configurar una carpeta public, en la cual todos los recursos del proyecto se podran consumir
-app.use(express.static(__dirname + '/css'));
+// servir archivos estáticos (css) desde /css para que en las vistas puedas usar /css/archivo.css
+app.use('/css', express.static(path.join(__dirname, 'css')));
+
 
 //vamos a crear el crud de estudiantes a partir de rutas
 
@@ -135,12 +138,12 @@ app.post('/crearReporte/update/:id', (req, res) => {
          Piezas_remplazadas, Tiempo_de_inactividad }
     = req.body;
     const campos = [];
-    if (Id_equipo) campos.push(`Id_equipo = '${Id_equipo}'`);
-    if (Sintoma_reportado) campos.push(`Sintoma_reportado = '${Sintoma_reportado}'`);
-    if (Diagnostico) campos.push(`Diagnostico = '${Diagnostico}'`);
-    if (Accion_correctiva) campos.push(`Accion_correctiva = '${Accion_correctiva}'`);
-    if (Piezas_remplazadas) campos.push(`Piezas_remplazadas = '${Piezas_remplazadas}'`);
-    if (Tiempo_de_inactividad) campos.push(`Tiempo_de_inactividad = '${Tiempo_de_inactividad}'`);
+    if (Id_equipo && Id_equipo !== '') campos.push(`Id_equipo = '${Id_equipo}'`);
+    if (Sintoma_reportado && Sintoma_reportado !== '') campos.push(`Sintoma_reportado = '${Sintoma_reportado}'`);
+    if (Diagnostico && Diagnostico !== '') campos.push(`Diagnostico = '${Diagnostico}'`);
+    if (Accion_correctiva && Accion_correctiva !== '') campos.push(`Accion_correctiva = '${Accion_correctiva}'`);
+    if (Piezas_remplazadas && Piezas_remplazadas !== '') campos.push(`Piezas_remplazadas = '${Piezas_remplazadas}'`);
+    if (Tiempo_de_inactividad && Tiempo_de_inactividad !== '') campos.push(`Tiempo_de_inactividad = '${Tiempo_de_inactividad}'`);
 
     if (campos.length === 0) return res.status(400).send('No se proporcionaron campos para actualizar');
     

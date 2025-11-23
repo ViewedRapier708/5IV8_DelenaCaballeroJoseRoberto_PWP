@@ -12,14 +12,21 @@
     <h1>Registros</h1>
     <button onclick="abrirModal()">Crear Nuevo Registro</button>
     <ul>
-        <% estudiantes.forEach(function(estudiante) { %>
+        <% registros.forEach(function(registro) { %>
             <li><strong>
-                    <%= estudiante.nombre %>
+                    <%= registro.Id_equipo %>
                 </strong>
-                (Edad: <%= estudiante.edad %>,
-                    Curso: <%= estudiante.curzo %>)
-                        <a href="/estudiantes/edit/<%= estudiante.id %>">Editar</a>
-                        <a href="/estudiantes/delete/<%= estudiante.id %>">Eliminar</a>
+
+                (Fecha y hora del reporte: <%= registro.Fecha_y_hora_reporte %>,
+                    Sintoma reportado: <%= registro.Sintoma_reportado %>,
+                    Diagnostico: <%= registro.Diagnostico %>,
+                    Accion correctiva: <%= registro.Accion_correctiva %>,
+                    Piezas remplazadas: <%= registro.Piezas_remplazadas %>,
+                    Tiempo de inactividad: <%= registro.Tiempo_de_inactividad %>
+                    )
+                        <a href="/estudiantes/edit/<%= registro.Id_registro
+                 %>">Editar</a>
+                        <a href="/estudiantes/delete/<%= registro.Id_registro %>">Eliminar</a>
             </li>
             <% }) ;%>
     </ul>
@@ -28,7 +35,7 @@
             <span class="cerrar" onclick="cerrarModal()">&times;</span>
 
             <h3>Crear Registro</h3>
-            <form action="/estudiantes" method="POST">
+            <form action="/crearReporte" method="POST">
                 <label>Id de equipo</label>
                 <input type="text" name="Id_equipo" required placeholder="Ingrese el id del equipo">
                 <label>Sintoma reportado</label>
@@ -41,22 +48,63 @@
                 <p>Nota: Ingrese los datos separados por comas</p>
                 <input type="text" name="Piezas_remplazadas" required placeholder="Ingrese las piezas remplazadas ">
                 <label>Tiempo de inactividad</label>
-                <input type="time" name="Tiempo_de_inactividad" required placeholder="Ingrese el tiempo de inactividad">
+                <input type="time" name="Tiempo_de_inactividad" required>
+
+                <!-- Acciones del modal -->
+                <div class="modal-actions">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button type="button" class="btn btn-secondary" onclick="cerrarModal()">Cancelar</button>
+                </div>
 
             </form>
 
         </div>
         <script>
+            function mostrarModal() {
+                const modal = document.getElementById('modal');
+                // Activamos la clase 'show' para animar la caja
+                modal.classList.add('show');
+            }
+
             function abrirModal() {
-                document.getElementById('modal').style.display = 'block';
+                const modal = document.getElementById('modal');
+                // usamos flex para centrar el modal
+                modal.style.display = 'flex';
+                // Necesitamos una reflow para que la animación funcione cuando cambiamos display
+                void modal.offsetWidth;
+                mostrarModal();
+                // mover foco al primer input para mejorar accesibilidad
+                const firstInput = modal.querySelector('input');
+                if (firstInput) firstInput.focus();
             }
 
             function cerrarModal() {
-                document.getElementById('modal').style.display = 'none';
+                const modal = document.getElementById('modal');
+                modal.classList.remove('show');
+                // esperar a que termine la transición y ocultar
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                }, 200);
             }
-            function enviarFormulario() {
-                document.querySelector('.modal-contenido form').submit();
+            function cerrarModalclick() {
+                document.getElementById('modal').addEventListener('click', function(event) {
+                    if (event.target === this) {
+                        cerrarModal();
+                    }
+                });
             }
+            cerrarModalclick();
+
+            // Cerrar con tecla Escape
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    const modal = document.getElementById('modal');
+                    // solo cerrar si está visible
+                    if (modal && modal.classList.contains('show')) {
+                        cerrarModal();
+                    }
+                }
+            });
         </script>
     </div>
 </body>

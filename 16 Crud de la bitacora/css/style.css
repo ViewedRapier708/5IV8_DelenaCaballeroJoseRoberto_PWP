@@ -106,7 +106,39 @@ ul li a:hover {
         }
 
         /* ----- CUANDO EL MODAL ESTÁ ACTIVO (ANIMACIÓN) ----- */
+        .modal.show {
+            display: flex; /* cuando está activo, mostramos como flex para centrar */
+        }
+
         .modal.show .modal-contenido {
             opacity: 1;
             transform: scale(1);
+        }
+
+        /* Botones dentro del modal */
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            justify-content: flex-end;
+        }
+
+        .cerrar {
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: #1976d2;
+            color: #fff;
+        }
+
+        .btn-primary:hover { filter: brightness(0.93); }
+
+        .btn-secondary {
+            background: #e0e0e0;
+            color: #222;
         }
