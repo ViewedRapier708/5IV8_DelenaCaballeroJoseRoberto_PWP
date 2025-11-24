@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edicion de datos de estudiantes</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="../css/editStyle.css">
 </head>
 
 <body>
@@ -13,7 +13,7 @@
 
     <h1>Modificacion de datos de los registros</h1>
     <div class="updateContainer">
-        <form action="/registro/update/<%= estudiante.id %>" method="POST">
+        <form action="/crearReporte/update/<%= reporte.id %>" method="POST">
            <table>
             <thead>
                 <tr>
@@ -27,27 +27,19 @@
                 </tr>
             </thead>
             <tbody>
-                <% registros.forEach(function(registro) { %>
                     <tr>
-                        <td><%= registro.Id_equipo %></td>
-                        <td><%= registro.Fecha_y_hora_reporte %></td>
-                        <td><%= registro.Sintoma_reportado %></td>
-                        <td><%= registro.Diagnostico %></td>
-                        <td><%= registro.Accion_correctiva %></td>
-                        <td><%= registro.Piezas_remplazadas %></td>
-                        <td><%= registro.Tiempo_de_inactividad %></td>
+                        <td><input type="text" name="Id_equipo" value="<%= reporte.Id_equipo %>"></td>
+                        <td><%= reporte.Fecha_y_hora_reporte %></td>
+                        <td><input type="text" name="Sintoma_reportado" value="<%= reporte.Sintoma_reportado %>"></td>
+                        <td><input type="text" name="Diagnostico" value="<%= reporte.Diagnostico %>"></td>
+                        <td><input type="text" name="Accion_correctiva" value="<%= reporte.Accion_correctiva %>"></td>
+                        <td><input type="text" name="Piezas_remplazadas" value="<%= reporte.Piezas_remplazadas %>"></td>
+                        <td><input type="text" name="Tiempo_de_inactividad" value="<%= reporte.Tiempo_de_inactividad %>"></td>
                     </tr>
-                <% }); %>
+      
             </tbody>
            </table>
-           
-            <label for="nombre">Nombre: </label>
-            <input type="text" id="nombre" name="nombre" value="<%= estudiante.nombre %>" required>
-            <label for="edad">Edad: </label>
-            <input type="number" id="edad" name="edad" value="<%= estudiante.edad %>" required>
-            <label for="curso">Curso: </label>
-            <input type="text" id="curso" name="curso" value="<%= estudiante.curzo %>" required>
-            <button type="submit">Editar Estudiante</button>
+            <button type="submit">Actualizar datos</button>
         </form>
 
     </div>

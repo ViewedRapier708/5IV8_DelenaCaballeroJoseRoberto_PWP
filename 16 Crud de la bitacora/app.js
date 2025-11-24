@@ -133,7 +133,7 @@ app.get('/crearReporte/edit/:id', (req, res) => {
 
 });
 app.post('/crearReporte/update/:id', (req, res) => {
-    const estudianteId = req.params.id;
+    const idregistro = req.params.id;
     const { Id_equipo, Sintoma_reportado,
          Diagnostico, Accion_correctiva, 
          Piezas_remplazadas, Tiempo_de_inactividad }
@@ -148,7 +148,7 @@ app.post('/crearReporte/update/:id', (req, res) => {
 
     if (campos.length === 0) return res.status(400).send('No se proporcionaron campos para actualizar');
     
-    const querry = `UPDATE bitacora_de_mantenimiento_correctivo SET ${campos.join(', ')} WHERE id = ${estudianteId};`;
+    const querry = `UPDATE bitacora_de_mantenimiento_correctivo SET ${campos.join(', ')} WHERE Id_registro = ${idregistro};`;
     bd.query(querry, (error, resultados) => {
         if (error) {
             console.log('Error al actualizar el estudiante: ' + error);
