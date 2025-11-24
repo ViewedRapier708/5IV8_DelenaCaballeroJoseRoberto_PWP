@@ -72,8 +72,10 @@ app.post('/crearReporte', (req, res) => {
         Piezas_remplazadas, 
         Tiempo_de_inactividad } = req.body;
 
-    const Fecha_y_hora_reporte = new Date();
-    
+        console.log(req.body); // Depuración: Verifica los datos recibidos
+        
+    const fechaMysql = new Date().toISOString().slice(0, 19).replace('T', ' ');
+    console.log(fechaMysql); // Depuración: Verifica la fecha y hora generada
     // Verifica que todos los campos estén presentes y no vacíos
     if (
         !Id_equipo || !Sintoma_reportado || !Diagnostico ||
@@ -86,15 +88,13 @@ app.post('/crearReporte', (req, res) => {
     if (isNaN(Id_equipo)) {
         return res.status(400).send('El Id_equipo debe ser un número');
     }
-    if (isNaN(Tiempo_de_inactividad)) {
-        return res.status(400).send('El Tiempo_de_inactividad debe ser un número');
-    }
+  
 
     const querry = `INSERT INTO bitacora_de_mantenimiento_correctivo
      (Id_equipo, Fecha_y_hora_reporte, Sintoma_reportado, Diagnostico, 
      Accion_correctiva, Piezas_remplazadas, 
      Tiempo_de_inactividad) VALUES 
-     ('${Id_equipo}', '${Fecha_y_hora_reporte}', '${Sintoma_reportado}',
+     ('${Id_equipo}', '${fechaMysql}', '${Sintoma_reportado}',
       '${Diagnostico}', '${Accion_correctiva}', '${Piezas_remplazadas}',
        '${Tiempo_de_inactividad}');`;
     
@@ -128,7 +128,7 @@ app.get('/crearReporte/edit/:id', (req, res) => {
             console.log('Error al obtener el estudiante: ' + error);//Depuracion
             res.status(500).send('Error al obtener el estudiante');
         }
-        res.render('edit', { estudiante: resultados[0] });
+        res.render('edit', { reporte: resultados[0] });
     });
 
 });

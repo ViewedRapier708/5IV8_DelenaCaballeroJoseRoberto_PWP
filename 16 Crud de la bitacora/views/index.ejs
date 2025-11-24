@@ -22,7 +22,7 @@
                 <th>Diagnóstico</th>
                 <th>Acción correctiva</th>
                 <th>Piezas remplazadas</th>
-                <th>Tiempo de inactividad</th>
+                <th>Tiempo de inactividad(horas)</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -75,12 +75,13 @@
 
         </div>
         <script>
+
+
             function mostrarModal() {
                 const modal = document.getElementById('modal');
-                // Activamos la clase 'show' para animar la caja
+            
                 modal.classList.add('show');
             }
-
             function abrirModal() {
                 const modal = document.getElementById('modal');
                 // usamos flex para centrar el modal

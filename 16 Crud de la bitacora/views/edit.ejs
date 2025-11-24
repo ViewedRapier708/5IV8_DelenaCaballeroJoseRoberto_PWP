@@ -1,23 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edicion de datos de estudiantes</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
-    <h1>Actualizacion de Datos del Estudiantes</h1>
-    <form action="/estudiantes/update/<%= estudiante.id %>" method="POST">
-        <label for="nombre">Nombre: </label>
-        <input type="text" id="nombre" name="nombre" value="<%= estudiante.nombre %>" required>
-        <label for="edad">Edad: </label>
-        <input type="number" id="edad" name="edad" value="<%= estudiante.edad %>" required>
-        <label for="curso">Curso: </label>
-        <input type="text" id="curso" name="curso" value="<%= estudiante.curzo %>" required>
-        <button type="submit">Editar Estudiante</button>
-    </form>
 
-    
+<body>
+
+
+    <h1>Modificacion de datos de los registros</h1>
+    <div class="updateContainer">
+        <form action="/registro/update/<%= estudiante.id %>" method="POST">
+           <table>
+            <thead>
+                <tr>
+                    <th>Id de equipo</th>
+                    <th>Fecha y hora del reporte</th>
+                    <th>Síntoma reportado</th>
+                    <th>Diagnóstico</th>
+                    <th>Acción correctiva</th>
+                    <th>Piezas remplazadas</th>
+                    <th>Tiempo de inactividad(horas)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% registros.forEach(function(registro) { %>
+                    <tr>
+                        <td><%= registro.Id_equipo %></td>
+                        <td><%= registro.Fecha_y_hora_reporte %></td>
+                        <td><%= registro.Sintoma_reportado %></td>
+                        <td><%= registro.Diagnostico %></td>
+                        <td><%= registro.Accion_correctiva %></td>
+                        <td><%= registro.Piezas_remplazadas %></td>
+                        <td><%= registro.Tiempo_de_inactividad %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+           </table>
+           
+            <label for="nombre">Nombre: </label>
+            <input type="text" id="nombre" name="nombre" value="<%= estudiante.nombre %>" required>
+            <label for="edad">Edad: </label>
+            <input type="number" id="edad" name="edad" value="<%= estudiante.edad %>" required>
+            <label for="curso">Curso: </label>
+            <input type="text" id="curso" name="curso" value="<%= estudiante.curzo %>" required>
+            <button type="submit">Editar Estudiante</button>
+        </form>
+
+    </div>
+
+
 </body>
+
 </html>
