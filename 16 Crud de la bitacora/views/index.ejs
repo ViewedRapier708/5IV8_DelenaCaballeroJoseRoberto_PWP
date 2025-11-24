@@ -62,24 +62,25 @@
             <span class="cerrar" onclick="cerrarModal()">&times;</span>
 
             <h3>Crear Registro</h3>
-            <form action="/crearReporte" method="POST">
+            <div id="modal-error" class="modal-error-message" style="display: none;"></div>
+            <form action="/crearReporte" method="POST" id="formCrearReporte" onsubmit="return validarFormulario()">
                 <label>Id de equipo</label>
-                <input type="text" name="Id_equipo" required placeholder="Ingrese el id del equipo">
+                <input type="text" id="Id_equipo" name="Id_equipo" required placeholder="Ingrese el id del equipo">
                 <label>Sintoma reportado</label>
-                <input type="text" name="Sintoma_reportado" required placeholder="Ingrese el sintoma reportado">
+                <input type="text" id="Sintoma_reportado" name="Sintoma_reportado" required placeholder="Ingrese el sintoma reportado">
                 <label>Diagnostico</label>
-                <input type="text" name="Diagnostico" required placeholder="Ingrese el diagnostico">
+                <input type="text" id="Diagnostico" name="Diagnostico" required placeholder="Ingrese el diagnostico">
                 <label>Accion correctiva</label>
                 <p>Nota: Pasos y reparaciones específicas realizadas.</p>
-                <input type="text" name="Accion_correctiva" required placeholder="Ingrese la accion correctiva">
+                <input type="text" id="Accion_correctiva" name="Accion_correctiva" required placeholder="Ingrese la accion correctiva">
                 <label>Piezas remplazadas</label>
                 <p>Nota: Ingrese los datos separados por comas,
                     <br>en caso de ser mas de 1 pieza igual indique la cantidad
                     <br>ej. 1:pieza1, 2:pieza2, :1pieza3
                 </p>
-                <input type="text" name="Piezas_remplazadas" required placeholder="Ingrese las piezas remplazadas ">
+                <input type="text" id="Piezas_remplazadas" name="Piezas_remplazadas" required placeholder="Ingrese las piezas remplazadas ">
                 <label>Tiempo de inactividad</label>
-                <input type="time" name="Tiempo_de_inactividad" required>
+                <input type="time" id="Tiempo_de_inactividad" name="Tiempo_de_inactividad" required>
 
                 <!-- Acciones del modal -->
                 <div class="modal-actions">
@@ -91,7 +92,63 @@
 
         </div>
         <script>
+            // Función de validación del formulario
+            function validarFormulario() {
+                const errorDiv = document.getElementById('modal-error');
+                
+                const idEquipo = document.getElementById('Id_equipo').value.trim();
+                const sintoma = document.getElementById('Sintoma_reportado').value.trim();
+                const diagnostico = document.getElementById('Diagnostico').value.trim();
+                const accion = document.getElementById('Accion_correctiva').value.trim();
+                const piezas = document.getElementById('Piezas_remplazadas').value.trim();
+                const tiempo = document.getElementById('Tiempo_de_inactividad').value.trim();
 
+                // Validar Id_equipo: solo números
+                if (!/^\d+$/.test(idEquipo)) {
+                    mostrarErrorModal('El Id_equipo debe contener solo números');
+                    return false;
+                }
+
+                // Validar Sintoma: solo letras y números
+                if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s]{3,255}$/.test(sintoma)) {
+                    mostrarErrorModal('El síntoma reportado debe contener solo letras y números (entre 3 y 255 caracteres)');
+                    return false;
+                }
+
+                // Validar Diagnostico: solo letras y números
+                if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s]{3,255}$/.test(diagnostico)) {
+                    mostrarErrorModal('El diagnóstico debe contener solo letras y números (entre 3 y 255 caracteres)');
+                    return false;
+                }
+
+                // Validar Accion_correctiva: solo letras y números
+                if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s]{3,255}$/.test(accion)) {
+                    mostrarErrorModal('La acción correctiva debe contener solo letras y números (entre 3 y 255 caracteres)');
+                    return false;
+                }
+
+                // Validar Piezas_remplazadas
+                if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s,.:()\-]{2,255}$/.test(piezas)) {
+                    mostrarErrorModal('Las piezas reemplazadas deben tener entre 2 y 255 caracteres válidos');
+                    return false;
+                }
+
+                // Validar formato de tiempo HH:MM
+                if (!/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/.test(tiempo)) {
+                    mostrarErrorModal('El tiempo de inactividad debe tener formato HH:MM (ejemplo: 02:30)');
+                    return false;
+                }
+
+                errorDiv.style.display = 'none';
+                return true;
+            }
+
+            function mostrarErrorModal(mensaje) {
+                const errorDiv = document.getElementById('modal-error');
+                errorDiv.textContent = mensaje;
+                errorDiv.style.display = 'block';
+                errorDiv.scrollIntoView();
+            }
 
             function mostrarModal() {
                 const modal = document.getElementById('modal');
@@ -112,7 +169,10 @@
 
             function cerrarModal() {
                 const modal = document.getElementById('modal');
+                const errorDiv = document.getElementById('modal-error');
                 modal.classList.remove('show');
+                // Ocultar mensaje de error
+                errorDiv.style.display = 'none';
                 // esperar a que termine la transición y ocultar
                 setTimeout(() => {
                     modal.style.display = 'none';

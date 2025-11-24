@@ -83,24 +83,34 @@ app.post('/crearReporte', (req, res) => {
         return res.redirect(`/?error=${encodeURIComponent('Todos los campos son obligatorios')}`);
     }
 
-    // Validar que Id_equipo sea un número válido
+    // Validar que Id_equipo sea un número válido (solo dígitos)
     if (!/^\d+$/.test(Id_equipo)) {
-        return res.redirect(`/?error=${encodeURIComponent('El Id_equipo debe ser un número válido')}`);
+        return res.redirect(`/?error=${encodeURIComponent('El Id_equipo debe contener solo números')}`);
     }
 
-    // Validar longitud máxima de campos de texto
-    if (
-        Sintoma_reportado.length > 255 ||
-        Diagnostico.length > 255 ||
-        Accion_correctiva.length > 255 ||
-        Piezas_remplazadas.length > 255
-    ) {
-        return res.redirect(`/?error=${encodeURIComponent('Los campos de texto no deben exceder 255 caracteres')}`);
+    // Validar Sintoma_reportado: solo letras y números
+    if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s]{3,255}$/.test(Sintoma_reportado.trim())) {
+        return res.redirect(`/?error=${encodeURIComponent('El síntoma reportado debe contener solo letras y números (entre 3 y 255 caracteres)')}`);
+    }
+
+    // Validar Diagnostico: solo letras y números
+    if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s]{3,255}$/.test(Diagnostico.trim())) {
+        return res.redirect(`/?error=${encodeURIComponent('El diagnóstico debe contener solo letras y números (entre 3 y 255 caracteres)')}`);
+    }
+
+    // Validar Accion_correctiva: solo letras y números
+    if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s]{3,255}$/.test(Accion_correctiva.trim())) {
+        return res.redirect(`/?error=${encodeURIComponent('La acción correctiva debe contener solo letras y números (entre 3 y 255 caracteres)')}`);
+    }
+
+    // Validar Piezas_remplazadas: formato "cantidad:nombre, cantidad:nombre" o "nombre, nombre"
+    if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s,.:()\-]{2,255}$/.test(Piezas_remplazadas.trim())) {
+        return res.redirect(`/?error=${encodeURIComponent('Las piezas reemplazadas deben tener entre 2 y 255 caracteres')}`);
     }
 
     // Validar que Tiempo_de_inactividad sea un formato de hora válido (HH:MM)
     if (!/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/.test(Tiempo_de_inactividad)) {
-        return res.redirect(`/?error=${encodeURIComponent('El tiempo de inactividad debe tener formato HH:MM')}`);
+        return res.redirect(`/?error=${encodeURIComponent('El tiempo de inactividad debe tener formato HH:MM (ejemplo: 02:30)')}`);
     }
 
     const fechaMysql = new Date().toISOString().slice(0, 19).replace('T', ' ');
@@ -172,29 +182,43 @@ app.post('/crearReporte/update/:id', (req, res) => {
 
     // Validar Id_equipo si se proporciona
     if (Id_equipo && Id_equipo.trim() !== '') {
-        if (!/^\d+$/.test(Id_equipo)) {
-            return res.redirect(`/crearReporte/edit/${idregistro}?error=${encodeURIComponent('El Id_equipo debe ser un número válido')}`);
+        if (!/^\d+$/.test(Id_equipo.trim())) {
+            return res.redirect(`/crearReporte/edit/${idregistro}?error=${encodeURIComponent('El Id_equipo debe contener solo números')}`);
         }
     }
 
-    // Validar longitud de campos de texto si se proporcionan
-    if (Sintoma_reportado && Sintoma_reportado.length > 255) {
-        return res.redirect(`/crearReporte/edit/${idregistro}?error=${encodeURIComponent('El síntoma reportado no debe exceder 255 caracteres')}`);
+    // Validar Sintoma_reportado si se proporciona
+    if (Sintoma_reportado && Sintoma_reportado.trim() !== '') {
+        if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s]{3,255}$/.test(Sintoma_reportado.trim())) {
+            return res.redirect(`/crearReporte/edit/${idregistro}?error=${encodeURIComponent('El síntoma reportado debe contener solo letras y números (entre 3 y 255 caracteres)')}`);
+        }
     }
-    if (Diagnostico && Diagnostico.length > 255) {
-        return res.redirect(`/crearReporte/edit/${idregistro}?error=${encodeURIComponent('El diagnóstico no debe exceder 255 caracteres')}`);
+
+    // Validar Diagnostico si se proporciona
+    if (Diagnostico && Diagnostico.trim() !== '') {
+        if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s]{3,255}$/.test(Diagnostico.trim())) {
+            return res.redirect(`/crearReporte/edit/${idregistro}?error=${encodeURIComponent('El diagnóstico debe contener solo letras y números (entre 3 y 255 caracteres)')}`);
+        }
     }
-    if (Accion_correctiva && Accion_correctiva.length > 255) {
-        return res.redirect(`/crearReporte/edit/${idregistro}?error=${encodeURIComponent('La acción correctiva no debe exceder 255 caracteres')}`);
+
+    // Validar Accion_correctiva si se proporciona
+    if (Accion_correctiva && Accion_correctiva.trim() !== '') {
+        if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s]{3,255}$/.test(Accion_correctiva.trim())) {
+            return res.redirect(`/crearReporte/edit/${idregistro}?error=${encodeURIComponent('La acción correctiva debe contener solo letras y números (entre 3 y 255 caracteres)')}`);
+        }
     }
-    if (Piezas_remplazadas && Piezas_remplazadas.length > 255) {
-        return res.redirect(`/crearReporte/edit/${idregistro}?error=${encodeURIComponent('Las piezas reemplazadas no debe exceder 255 caracteres')}`);
+
+    // Validar Piezas_remplazadas si se proporciona
+    if (Piezas_remplazadas && Piezas_remplazadas.trim() !== '') {
+        if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s,.:()\-]{2,255}$/.test(Piezas_remplazadas.trim())) {
+            return res.redirect(`/crearReporte/edit/${idregistro}?error=${encodeURIComponent('Las piezas reemplazadas deben tener entre 2 y 255 caracteres válidos')}`);
+        }
     }
 
     // Validar formato de tiempo si se proporciona
     if (Tiempo_de_inactividad && Tiempo_de_inactividad.trim() !== '') {
         if (!/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/.test(Tiempo_de_inactividad)) {
-            return res.redirect(`/crearReporte/edit/${idregistro}?error=${encodeURIComponent('El tiempo de inactividad debe tener formato HH:MM')}`);
+            return res.redirect(`/crearReporte/edit/${idregistro}?error=${encodeURIComponent('El tiempo de inactividad debe tener formato HH:MM (ejemplo: 02:30)')}`);
         }
     }
 

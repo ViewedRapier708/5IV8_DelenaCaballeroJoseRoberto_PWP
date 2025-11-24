@@ -247,6 +247,18 @@ form p {
     animation: slideIn 0.3s ease;
 }
 
+.modal-error-message {
+    background-color: #ffebee;
+    border-left: 4px solid #c62828;
+    color: #c62828;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(198, 40, 40, 0.1);
+}
+
 .success-message {
     background-color: #e8f5e9;
     border-left: 4px solid #2e7d32;
