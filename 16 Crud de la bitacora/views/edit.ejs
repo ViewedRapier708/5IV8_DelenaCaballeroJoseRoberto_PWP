@@ -5,45 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edición de datos de estudiantes</title>
-    <link rel="stylesheet" href="../css/editStyle.css">
+    <link rel="stylesheet" href="/css/editStyle.css">
 </head>
 
 <body>
-    <h1>Modificación de datos del registro <%= reporte.id %></h1>
+    <h1>Modificación de datos del registro <%= reporte.Id_registro %></h1>
     <div class="updateContainer">
-<<<<<<< HEAD
-        <form action="/crearReporte/update/<%= reporte.id %>" method="POST" class="formulario-edicion">
-            <div class="campo-formulario">
-                <label for="Id_equipo">Id de equipo:</label>
-                <input type="text" id="Id_equipo" name="Id_equipo" value="<%= reporte.Id_equipo %>">
-            </div>
-            <div class="campo-formulario">
-                <label for="Fecha_y_hora_reporte">Fecha y hora del reporte:</label>
-                <input type="text" id="Fecha_y_hora_reporte" name="Fecha_y_hora_reporte" value="<%= reporte.Fecha_y_hora_reporte %>" readonly>
-            </div>
-            <div class="campo-formulario">
-                <label for="Sintoma_reportado">Síntoma reportado:</label>
-                <input type="text" id="Sintoma_reportado" name="Sintoma_reportado" value="<%= reporte.Sintoma_reportado %>">
-            </div>
-            <div class="campo-formulario">
-                <label for="Diagnostico">Diagnóstico:</label>
-                <input type="text" id="Diagnostico" name="Diagnostico" value="<%= reporte.Diagnostico %>">
-            </div>
-            <div class="campo-formulario">
-                <label for="Accion_correctiva">Acción correctiva:</label>
-                <input type="text" id="Accion_correctiva" name="Accion_correctiva" value="<%= reporte.Accion_correctiva %>">
-            </div>
-            <div class="campo-formulario">
-                <label for="Piezas_remplazadas">Piezas remplazadas:</label>
-                <input type="text" id="Piezas_remplazadas" name="Piezas_remplazadas" value="<%= reporte.Piezas_remplazadas %>">
-            </div>
-            <div class="campo-formulario">
-                <label for="Tiempo_de_inactividad">Tiempo de inactividad (horas):</label>
-                <input type="text" id="Tiempo_de_inactividad" name="Tiempo_de_inactividad" value="<%= reporte.Tiempo_de_inactividad %>">
-            </div>
-            <button type="submit" class="boton-actualizar">Actualizar datos</button>
-=======
-        <form action="/crearReporte/update/<%= reporte.id %>" method="POST" class="edit-form">
+        <form action="/crearReporte/update/<%= reporte.Id_registro %>" method="POST" class="edit-form">
             <!-- Formulario de edición del reporte -->
             <fieldset>
                 <legend>Editar reporte</legend>
@@ -51,12 +19,6 @@
                 <div class="form-row">
                     <label for="Id_equipo">Id de equipo</label>
                     <input id="Id_equipo" name="Id_equipo" type="text" value="<%= reporte.Id_equipo %>" required>
-                </div>
-
-                <div class="form-row">
-                    <label for="Fecha_y_hora_reporte">Fecha y hora del reporte</label>
-                    <!-- Mantener como texto si el formato no coincide con datetime-local -->
-                    <input id="Fecha_y_hora_reporte" name="Fecha_y_hora_reporte" type="text" value="<%= reporte.Fecha_y_hora_reporte %>" required>
                 </div>
 
                 <div class="form-row">
@@ -88,8 +50,8 @@
                     <button type="submit">Actualizar datos</button>
                 </div>
             </fieldset>
->>>>>>> 42c5cb57a2851d982274099cb61ecf1a73df76e8
         </form>
+        <button><a href="/">Cancelar</a></button>
     </div>
 </body>
 

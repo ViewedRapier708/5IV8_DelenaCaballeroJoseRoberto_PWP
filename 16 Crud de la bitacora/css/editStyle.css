@@ -1,26 +1,127 @@
+/* General styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 20px;
+    background-color: #f9f1c0;
+    color: #0A0C04;
 }
+
 h1 {
-    color: #333;
     text-align: center;
+    color: #12412B;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    font-size: 2rem;
 }
-form label {
+
+/* Contenedor principal */
+.updateContainer {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Formulario */
+.edit-form {
+    width: 100%;
+}
+
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+legend {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2D4A1C;
+    margin-bottom: 20px;
+}
+
+/* Form rows */
+.form-row {
+    margin-bottom: 20px;
+}
+
+.form-row label {
     display: block;
     margin-bottom: 8px;
-    font-weight: bold;
+    font-weight: 600;
+    color: #12412B;
+    font-size: 14px;
 }
-.updateContainer
-{
-    padding: 30px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
+.form-row input,
+.form-row textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #a7d865;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
 }
-.campo-formulario {
-    margin-bottom: 15px;
+
+.form-row input:focus,
+.form-row textarea:focus {
+    outline: none;
+    border-color: #4A7C2E;
+    box-shadow: 0 0 0 3px rgba(74, 124, 46, 0.1);
+}
+
+.form-row textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Botones de acción */
+.form-actions {
+    margin-top: 30px;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.form-actions button {
+    background-color: #4A7C2E;
+    color: #F4EB91;
+    border-radius: 8px;
+    padding: 12px 32px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-actions button:hover {
+    background-color: #2D4A1C;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .updateContainer {
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .form-actions button {
+        width: 100%;
+    }
 }
