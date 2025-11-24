@@ -11,6 +11,18 @@
 <body>
     <h1>Registros</h1>
     <div class="tabla-registros">
+    <% if (error) { %>
+        <div class="error-message">
+            <span class="error-icon">⚠️</span>
+            <span><%= error %></span>
+        </div>
+    <% } %>
+    <% if (success) { %>
+        <div class="success-message">
+            <span class="success-icon">✓</span>
+            <span><%= success %></span>
+        </div>
+    <% } %>
     <button class="btn-primary" onclick="abrirModal()">Crear Nuevo Registro</button>
 
         <table>
@@ -125,6 +137,14 @@
                     }
                 }
             });
+
+            // Auto-cerrar mensajes después de 5 segundos
+            setTimeout(() => {
+                const errorMsg = document.querySelector('.error-message');
+                const successMsg = document.querySelector('.success-message');
+                if (errorMsg) errorMsg.style.display = 'none';
+                if (successMsg) successMsg.style.display = 'none';
+            }, 5000);
         </script>
     </div>
 </body>

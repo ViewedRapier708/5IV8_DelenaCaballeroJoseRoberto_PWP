@@ -11,6 +11,12 @@
 <body>
     <h1>Modificación de datos del registro <%= reporte.Id_registro %></h1>
     <div class="updateContainer">
+        <% if (error) { %>
+            <div class="error-message">
+                <span class="error-icon">⚠️</span>
+                <span><%= error %></span>
+            </div>
+        <% } %>
         <form action="/crearReporte/update/<%= reporte.Id_registro %>" method="POST" class="edit-form">
             <!-- Formulario de edición del reporte -->
             <fieldset>
@@ -43,7 +49,7 @@
 
                 <div class="form-row">
                     <label for="Tiempo_de_inactividad">Tiempo de inactividad (horas)</label>
-                    <input id="Tiempo_de_inactividad" name="Tiempo_de_inactividad" type="time" step="0.1" value="<%= reporte.Tiempo_de_inactividad %>">
+                    <input id="Tiempo_de_inactividad" name="Tiempo_de_inactividad" type="time" value="<%= reporte.Tiempo_de_inactividad %>">
                 </div>
 
                 <div class="form-actions">

@@ -47,10 +47,6 @@ app.set('views', path.join(__dirname, 'views'));
 // servir archivos estáticos (css) desde /css para que en las vistas puedas usar /css/archivo.css
 app.use('/css', express.static(path.join(__dirname, 'css')));
 
-
-//vamos a crear el crud de estudiantes a partir de rutas
-
-//ruta get para mostrar el formulario y la lista de estudiantes
 app.get('/', (req, res)=>{
     //necesito obtener la lista de estudiantes desde la base de datos
     const querry = 'SELECT * FROM bitacora_de_mantenimiento_correctivo';
@@ -59,7 +55,10 @@ app.get('/', (req, res)=>{
             console.log('Error al obtener los registros: ' + error);
             res.status(500).send('Error al obtener los registros');
         }
-        res.render('index', { registros: resultados });
+        // Obtener mensajes de error o éxito si existen
+        const errorMsg = req.query.error || null;
+        const successMsg = req.query.success || null;
+        res.render('index', { registros: resultados, error: errorMsg, success: successMsg });
         
     });
 });
@@ -81,12 +80,12 @@ app.post('/crearReporte', (req, res) => {
         !Piezas_remplazadas || Piezas_remplazadas.trim() === '' ||
         !Tiempo_de_inactividad || Tiempo_de_inactividad.toString().trim() === ''
     ) {
-        return res.status(400).send('Todos los campos son obligatorios');
+        return res.redirect(`/?error=${encodeURIComponent('Todos los campos son obligatorios')}`);
     }
 
     // Validar que Id_equipo sea un número válido
     if (!/^\d+$/.test(Id_equipo)) {
-        return res.status(400).send('El Id_equipo debe ser un número válido');
+        return res.redirect(`/?error=${encodeURIComponent('El Id_equipo debe ser un número válido')}`);
     }
 
     // Validar longitud máxima de campos de texto
@@ -96,12 +95,12 @@ app.post('/crearReporte', (req, res) => {
         Accion_correctiva.length > 255 ||
         Piezas_remplazadas.length > 255
     ) {
-        return res.status(400).send('Los campos de texto no deben exceder 255 caracteres');
+        return res.redirect(`/?error=${encodeURIComponent('Los campos de texto no deben exceder 255 caracteres')}`);
     }
 
     // Validar que Tiempo_de_inactividad sea un formato de hora válido (HH:MM)
     if (!/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/.test(Tiempo_de_inactividad)) {
-        return res.status(400).send('El tiempo de inactividad debe tener formato HH:MM');
+        return res.redirect(`/?error=${encodeURIComponent('El tiempo de inactividad debe tener formato HH:MM')}`);
     }
 
     const fechaMysql = new Date().toISOString().slice(0, 19).replace('T', ' ');
@@ -118,10 +117,10 @@ app.post('/crearReporte', (req, res) => {
     
        bd.query(querry, (error, resultados) => {
         if (error) {
-            console.log('Error al crear el estudiante: ' + error);
-            res.status(500).send('Error al crear el estudiante');
+            console.log('Error al crear el reporte: ' + error);
+            return res.redirect(`/?error=${encodeURIComponent('Error al crear el reporte en la base de datos')}`);
         }
-        res.redirect('/');
+        res.redirect(`/?success=${encodeURIComponent('Reporte creado exitosamente')}`);
     });
 });
 //Ruta para eliminar un estudiante
@@ -129,15 +128,15 @@ app.get('/crearReporte/delete/:id', (req, res) => {
     const idregistro = req.params.id;
     // Validación: solo se admiten números
     if (!/^\d+$/.test(idregistro)) {
-        return res.status(400).send('El ID debe ser un número válido');
+        return res.redirect(`/?error=${encodeURIComponent('El ID debe ser un número válido')}`);
     }
     const querry = `DELETE FROM bitacora_de_mantenimiento_correctivo WHERE Id_registro = ${idregistro};`;
     bd.query(querry, (error, resultados) => {
         if (error) {
             console.log('Error al eliminar el registro: ' + error);//Depuracion
-            res.status(500).send('Error al eliminar el registro');
+            return res.redirect(`/?error=${encodeURIComponent('Error al eliminar el registro')}`);
         }
-        res.redirect('/');
+        res.redirect(`/?success=${encodeURIComponent('Registro eliminado exitosamente')}`);
     });
 })
 //Ruta para buscar y actualizar al estudiante
@@ -153,7 +152,9 @@ app.get('/crearReporte/edit/:id', (req, res) => {
             console.log('Error al obtener el estudiante: ' + error);//Depuracion
             res.status(500).send('Error al obtener el estudiante');
         }
-        res.render('edit', { reporte: resultados[0] });
+        // Obtener mensaje de error si existe
+        const errorMsg = req.query.error || null;
+        res.render('edit', { reporte: resultados[0], error: errorMsg });
     });
 
 });
@@ -166,34 +167,34 @@ app.post('/crearReporte/update/:id', (req, res) => {
 
     // Validar que el ID sea un número válido
     if (!/^\d+$/.test(idregistro)) {
-        return res.status(400).send('El ID debe ser un número válido');
+        return res.redirect(`/crearReporte/edit/${idregistro}?error=${encodeURIComponent('El ID debe ser un número válido')}`);
     }
 
     // Validar Id_equipo si se proporciona
     if (Id_equipo && Id_equipo.trim() !== '') {
         if (!/^\d+$/.test(Id_equipo)) {
-            return res.status(400).send('El Id_equipo debe ser un número válido');
+            return res.redirect(`/crearReporte/edit/${idregistro}?error=${encodeURIComponent('El Id_equipo debe ser un número válido')}`);
         }
     }
 
     // Validar longitud de campos de texto si se proporcionan
     if (Sintoma_reportado && Sintoma_reportado.length > 255) {
-        return res.status(400).send('El síntoma reportado no debe exceder 255 caracteres');
+        return res.redirect(`/crearReporte/edit/${idregistro}?error=${encodeURIComponent('El síntoma reportado no debe exceder 255 caracteres')}`);
     }
     if (Diagnostico && Diagnostico.length > 255) {
-        return res.status(400).send('El diagnóstico no debe exceder 255 caracteres');
+        return res.redirect(`/crearReporte/edit/${idregistro}?error=${encodeURIComponent('El diagnóstico no debe exceder 255 caracteres')}`);
     }
     if (Accion_correctiva && Accion_correctiva.length > 255) {
-        return res.status(400).send('La acción correctiva no debe exceder 255 caracteres');
+        return res.redirect(`/crearReporte/edit/${idregistro}?error=${encodeURIComponent('La acción correctiva no debe exceder 255 caracteres')}`);
     }
     if (Piezas_remplazadas && Piezas_remplazadas.length > 255) {
-        return res.status(400).send('Las piezas reemplazadas no debe exceder 255 caracteres');
+        return res.redirect(`/crearReporte/edit/${idregistro}?error=${encodeURIComponent('Las piezas reemplazadas no debe exceder 255 caracteres')}`);
     }
 
     // Validar formato de tiempo si se proporciona
     if (Tiempo_de_inactividad && Tiempo_de_inactividad.trim() !== '') {
         if (!/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/.test(Tiempo_de_inactividad)) {
-            return res.status(400).send('El tiempo de inactividad debe tener formato HH:MM');
+            return res.redirect(`/crearReporte/edit/${idregistro}?error=${encodeURIComponent('El tiempo de inactividad debe tener formato HH:MM')}`);
         }
     }
 
@@ -205,7 +206,7 @@ app.post('/crearReporte/update/:id', (req, res) => {
     if (Piezas_remplazadas && Piezas_remplazadas.trim() !== '') campos.push(`Piezas_remplazadas = '${Piezas_remplazadas.trim()}'`);
     if (Tiempo_de_inactividad && Tiempo_de_inactividad.trim() !== '') campos.push(`Tiempo_de_inactividad = '${Tiempo_de_inactividad.trim()}'`);
 
-    if (campos.length === 0) return res.status(400).send('No se proporcionaron campos para actualizar');
+    if (campos.length === 0) return res.redirect(`/crearReporte/edit/${idregistro}?error=${encodeURIComponent('No se proporcionaron campos para actualizar')}`);
     
     const querry = `UPDATE bitacora_de_mantenimiento_correctivo SET ${campos.join(', ')} WHERE Id_registro = ${idregistro};`;
     bd.query(querry, (error, resultados) => {
