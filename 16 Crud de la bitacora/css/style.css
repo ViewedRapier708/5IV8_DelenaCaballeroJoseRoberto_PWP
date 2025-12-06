@@ -24,6 +24,7 @@ h1 {
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
     padding: 30px;
+    overflow: auto;
 }
 
 /* Tabla */
@@ -155,13 +156,7 @@ form p {
     font-size: 1.5rem;
 }
 
-@media (min-width: 600px) {
-    .modal-contenido {
-        width: 40vw;
-        max-width: 600px;
-        padding: 30px;
-    }
-}
+
 
 .modal.show {
     display: flex;
@@ -188,7 +183,7 @@ form p {
 }
 
 /* Botones */
-.btn-primary {
+.crear {
     background-color: #4A7C2E;
     color: #F4EB91;
     border-radius: 8px;
@@ -201,13 +196,13 @@ form p {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.btn-primary:hover {
+.crear:hover {
     background-color: #2D4A1C;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     transform: translateY(-1px);
 }
 
-.btn-secondary {
+.crear {
     background: #B1E275;
     color: #12412B;
     border-radius: 8px;
@@ -219,7 +214,7 @@ form p {
     transition: all 0.2s ease;
 }
 
-.btn-secondary:hover {
+.crear:hover {
     background: #a7d865;
 }
 
@@ -230,7 +225,7 @@ form p {
     justify-content: flex-end;
 }
 
-/* Mensajes de error y éxito */
+/* Mensajes de error o exito*/
 .error-message {
     background-color: #ffebee;
     border-left: 4px solid #c62828;
@@ -279,37 +274,4 @@ form p {
 .success-icon {
     font-size: 20px;
     flex-shrink: 0;
-}
-
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    table {
-        font-size: 12px;
-    }
-    
-    th, td {
-        padding: 8px 6px;
-    }
-    
-    .tabla-registros {
-        padding: 15px;
-        overflow-x: auto;
-    }
-    
-    .error-message,
-    .success-message {
-        padding: 12px 15px;
-        font-size: 13px;
-    }
 }

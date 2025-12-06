@@ -23,7 +23,7 @@
             <span><%= success %></span>
         </div>
     <% } %>
-    <button class="btn-primary" onclick="abrirModal()">Crear Nuevo Registro</button>
+    <button class="crear" onclick="abrirModal()">Crear Nuevo Registro</button>
 
         <table>
         <thead>
@@ -44,7 +44,7 @@
                     <td><%= registro.Id_equipo %></td>
                     <td><%= registro.Fecha_y_hora_reporte %></td>
                     <td><%= registro.Sintoma_reportado %></td>
-                    <td><%= registro.Diagnostico %></td>
+                    <td ><%= registro.Diagnostico %></td>
                     <td><%= registro.Accion_correctiva %></td>
                     <td><%= registro.Piezas_remplazadas %></td>
                     <td><%= registro.Tiempo_de_inactividad %></td>
@@ -79,13 +79,15 @@
                     <br>ej. 1:pieza1, 2:pieza2, :1pieza3
                 </p>
                 <input type="text" id="Piezas_remplazadas" name="Piezas_remplazadas" required placeholder="Ingrese las piezas remplazadas ">
+               
                 <label>Tiempo de inactividad</label>
-                <input type="time" id="Tiempo_de_inactividad" name="Tiempo_de_inactividad" required>
+                 <p>La fecha tiene que tener formato: HH:MM (horas:minutos)</p>
+                <input type="text" id="Tiempo_de_inactividad" name="Tiempo_de_inactividad" required>
 
                 <!-- Acciones del modal -->
                 <div class="modal-actions">
-                    <button type="submit" class="btn btn-primary">Guardar</button>
-                    <button type="button" class="btn btn-secondary" onclick="cerrarModal()">Cancelar</button>
+                    <button type="submit" class="btn crear">Guardar</button>
+                    <button type="button" class="btn cerrar" onclick="cerrarModal()">Cancelar</button>
                 </div>
 
             </form>
@@ -147,7 +149,7 @@
                 const errorDiv = document.getElementById('modal-error');
                 errorDiv.textContent = mensaje;
                 errorDiv.style.display = 'block';
-                errorDiv.scrollIntoView();
+                
             }
 
             function mostrarModal() {

@@ -84,8 +84,8 @@ app.post('/crearReporte', (req, res) => {
     }
 
     // Validar que Id_equipo sea un número válido (solo dígitos)
-    if (!/^\d+$/.test(Id_equipo)) {
-        return res.redirect(`/?error=${encodeURIComponent('El Id_equipo debe contener solo números')}`);
+    if (!/^\d+$/.test(Id_equipo) || Id_equipo.length > 10) {
+        return res.redirect(`/?error=${encodeURIComponent('El Id_equipo debe contener solo números y una longitud de 10 caracteres numericos como maximo')}`);
     }
 
     // Validar Sintoma_reportado: solo letras y números
@@ -99,19 +99,23 @@ app.post('/crearReporte', (req, res) => {
     }
 
     // Validar Accion_correctiva: solo letras y números
-    if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s]{3,255}$/.test(Accion_correctiva.trim())) {
-        return res.redirect(`/?error=${encodeURIComponent('La acción correctiva debe contener solo letras y números (entre 3 y 255 caracteres)')}`);
+    // Validar Accion_correctiva: permite letras, números, espacios y formato "cantidad:componente"
+    if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s:]{3,255}$/.test(Accion_correctiva.trim())) {
+        return res.redirect(`/?error=${encodeURIComponent('La acción correctiva debe contener solo letras, números, espacios y dos puntos (entre 3 y 255 caracteres, ejemplo: 2:Reemplazo de motor)')}`);
     }
 
     // Validar Piezas_remplazadas: formato "cantidad:nombre, cantidad:nombre" o "nombre, nombre"
     if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s,.:()\-]{2,255}$/.test(Piezas_remplazadas.trim())) {
         return res.redirect(`/?error=${encodeURIComponent('Las piezas reemplazadas deben tener entre 2 y 255 caracteres')}`);
     }
+    // Validar que Tiempo_de_inactividad sea un número entero positivo (puede ser mayor a 24)
+    // Validar que Tiempo_de_inactividad sea un número entero positivo o decimal (permitir minutos, ejemplo: 36.5)
 
-    // Validar que Tiempo_de_inactividad sea un formato de hora válido (HH:MM)
-    if (!/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/.test(Tiempo_de_inactividad)) {
-        return res.redirect(`/?error=${encodeURIComponent('El tiempo de inactividad debe tener formato HH:MM (ejemplo: 02:30)')}`);
-    }
+        // Permitir formato con dos puntos (ejemplo: "36:30" para 36 horas y 30 minutos)
+        if (!/^\d{1,3}:\d{1,2}$/.test(Tiempo_de_inactividad.trim())) {
+            return res.redirect(`/crearReporte/edit/${idregistro}?error=${encodeURIComponent('El tiempo de inactividad debe estar en formato horas:minutos (ejemplo: 36:30)')}`);
+        }
+    
 
     const fechaMysql = new Date().toISOString().slice(0, 19).replace('T', ' ');
 
@@ -142,10 +146,10 @@ app.get('/crearReporte/delete/:id', (req, res) => {
     }
     const querry = `DELETE FROM bitacora_de_mantenimiento_correctivo WHERE Id_registro = ${idregistro};`;
     bd.query(querry, (error, resultados) => {
-        if (error) {
-            console.log('Error al eliminar el registro: ' + error);//Depuracion
+        if (resultados.affectedRows === 0) {
             return res.redirect(`/?error=${encodeURIComponent('Error al eliminar el registro')}`);
         }
+        
         res.redirect(`/?success=${encodeURIComponent('Registro eliminado exitosamente')}`);
     });
 })
@@ -160,7 +164,7 @@ app.get('/crearReporte/edit/:id', (req, res) => {
     bd.query(querry, (error, resultados) => {
         if (error) {
             console.log('Error al obtener el estudiante: ' + error);//Depuracion
-            res.status(500).send('Error al obtener el estudiante');
+            res.status(500).send('Error al obtener el registro');
         }
         // Obtener mensaje de error si existe
         const errorMsg = req.query.error || null;
@@ -182,8 +186,8 @@ app.post('/crearReporte/update/:id', (req, res) => {
 
     // Validar Id_equipo si se proporciona
     if (Id_equipo && Id_equipo.trim() !== '') {
-        if (!/^\d+$/.test(Id_equipo.trim())) {
-            return res.redirect(`/crearReporte/edit/${idregistro}?error=${encodeURIComponent('El Id_equipo debe contener solo números')}`);
+        if (!/^\d+$/.test(Id_equipo.trim()) || Id_equipo.length > 10) {
+            return res.redirect(`/crearReporte/edit/${idregistro}?error=${encodeURIComponent('El Id_equipo debe contener solo números y una longitud de 10 caracteres numericos como maximo sin espacios')}`);
         }
     }
 
@@ -192,6 +196,10 @@ app.post('/crearReporte/update/:id', (req, res) => {
         if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s]{3,255}$/.test(Sintoma_reportado.trim())) {
             return res.redirect(`/crearReporte/edit/${idregistro}?error=${encodeURIComponent('El síntoma reportado debe contener solo letras y números (entre 3 y 255 caracteres)')}`);
         }
+    }else{
+        if (!Sintoma_reportado || Sintoma_reportado.trim() === '') {
+            return res.redirect(`/crearReporte/edit/${idregistro}?error=${encodeURIComponent('El síntoma reportado no puede estar vacío')}`);
+        }
     }
 
     // Validar Diagnostico si se proporciona
@@ -199,13 +207,19 @@ app.post('/crearReporte/update/:id', (req, res) => {
         if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s]{3,255}$/.test(Diagnostico.trim())) {
             return res.redirect(`/crearReporte/edit/${idregistro}?error=${encodeURIComponent('El diagnóstico debe contener solo letras y números (entre 3 y 255 caracteres)')}`);
         }
+    }else{
+        if (!Diagnostico || Diagnostico.trim() === '') {
+            return res.redirect(`/crearReporte/edit/${idregistro}?error=${encodeURIComponent('El diagnóstico no puede estar vacío')}`);
+        }
     }
 
-    // Validar Accion_correctiva si se proporciona
-    if (Accion_correctiva && Accion_correctiva.trim() !== '') {
-        if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s]{3,255}$/.test(Accion_correctiva.trim())) {
-            return res.redirect(`/crearReporte/edit/${idregistro}?error=${encodeURIComponent('La acción correctiva debe contener solo letras y números (entre 3 y 255 caracteres)')}`);
-        }
+    // Validar Accion_correctiva si se proporciona - solo valida que no esté vacío
+    if (!Accion_correctiva || Accion_correctiva.trim() === '') {
+        return res.redirect(`/crearReporte/edit/${idregistro}?error=${encodeURIComponent('La acción correctiva no puede estar vacía')}`);
+    }else{
+      if(Accion_correctiva.trim() === ' ' ){
+        return res.redirect(`/crearReporte/edit/${idregistro}?error=${encodeURIComponent('La acción correctiva no puede estar vacía')}`);
+      }
     }
 
     // Validar Piezas_remplazadas si se proporciona
@@ -213,13 +227,19 @@ app.post('/crearReporte/update/:id', (req, res) => {
         if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s,.:()\-]{2,255}$/.test(Piezas_remplazadas.trim())) {
             return res.redirect(`/crearReporte/edit/${idregistro}?error=${encodeURIComponent('Las piezas reemplazadas deben tener entre 2 y 255 caracteres válidos')}`);
         }
+    }else{
+        if (!Piezas_remplazadas || Piezas_remplazadas.trim() === '') {
+            return res.redirect(`/crearReporte/edit/${idregistro}?error=${encodeURIComponent('Las piezas reemplazadas no puede estar vacías')}`);
+        }
     }
 
     // Validar formato de tiempo si se proporciona
     if (Tiempo_de_inactividad && Tiempo_de_inactividad.trim() !== '') {
-        if (!/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/.test(Tiempo_de_inactividad)) {
-            return res.redirect(`/crearReporte/edit/${idregistro}?error=${encodeURIComponent('El tiempo de inactividad debe tener formato HH:MM (ejemplo: 02:30)')}`);
+        // Permitir formato con dos puntos (ejemplo: "36:30" para 36 horas y 30 minutos)
+        if (!/^\d{1,3}:\d{1,2}$/.test(Tiempo_de_inactividad.trim())) {
+            return res.redirect(`/crearReporte/edit/${idregistro}?error=${encodeURIComponent('El tiempo de inactividad debe estar en formato horas:minutos (ejemplo: 36:30)')}`);
         }
+
     }
 
     const campos = [];
@@ -236,7 +256,7 @@ app.post('/crearReporte/update/:id', (req, res) => {
     bd.query(querry, (error, resultados) => {
         if (error) {
             console.log('Error al actualizar el estudiante: ' + error);
-            res.status(500).send('Error al actualizar el estudiante');
+            res.status(500).send('Error al actualizar el registro');
         }
 
 

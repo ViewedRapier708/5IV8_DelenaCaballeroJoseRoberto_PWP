@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <h1>Modificación de datos del registro <%= reporte.Id_registro %></h1>
+    <h1>Modificación de datos del registro <%= reporte.Id_equipo %></h1>
     <div class="updateContainer">
         <% if (error) { %>
             <div class="error-message">
@@ -46,10 +46,10 @@
                     <label for="Piezas_remplazadas">Piezas reemplazadas</label>
                     <input id="Piezas_remplazadas" name="Piezas_remplazadas" type="text" value="<%= reporte.Piezas_remplazadas %>">
                 </div>
-
+                <p>La fecha tiene que tener formato: HH:MM (horas:minutos)</p>
                 <div class="form-row">
                     <label for="Tiempo_de_inactividad">Tiempo de inactividad (horas)</label>
-                    <input id="Tiempo_de_inactividad" name="Tiempo_de_inactividad" type="time" value="<%= reporte.Tiempo_de_inactividad %>">
+                    <input id="Tiempo_de_inactividad" name="Tiempo_de_inactividad" type="text" value="<%= reporte.Tiempo_de_inactividad %>">
                 </div>
 
                 <div class="form-actions">
