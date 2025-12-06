@@ -1,0 +1,18 @@
+{
+  "name": "19-gatodegatos",
+  "version": "1.0.0",
+  "description": "API y frontend para Gato de Gatos con puntajes y MySQL",
+  "main": "Backend/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon Backend/server.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "ejs": "^3.1.10",
+    "express": "^5.2.1",
+    "mysql2": "^3.15.3",
+    "nodemon": "^3.1.11",
+    "path": "^0.12.7"
+  }
+}

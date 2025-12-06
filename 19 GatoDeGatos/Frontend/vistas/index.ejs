@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gato de Gatos - Ultimate Tic-Tac-Toe</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>🎮 Gato de Gatos</h1>
+    <p>Ultimate Tic-Tac-Toe con MySQL</p>
+  </header>
+
+  <main class="container">
+    <!-- Modal para registrar jugadores -->
+    <div id="modalJugadores" class="modal active">
+      <div class="modal-content">
+        <h2>Registra los jugadores</h2>
+        <form id="formJugadores">
+          <div class="form-group">
+            <label>Jugador X:</label>
+            <input type="text" id="nombreX" placeholder="Nombre del jugador X" required>
+          </div>
+          <div class="form-group">
+            <label>Jugador O:</label>
+            <input type="text" id="nombreO" placeholder="Nombre del jugador O" required>
+          </div>
+          <button type="submit" class="btn-primary">Iniciar Partida</button>
+        </form>
+        <p id="msgModal" class="msg"></p>
+      </div>
+    </div>
+
+    <!-- Área de juego -->
+    <div id="areaJuego" class="game-area hidden">
+      <div class="game-info">
+        <div class="players-info">
+          <div class="player player-x">
+            <span class="player-symbol">X</span>
+            <span id="nombreJugadorX" class="player-name"></span>
+          </div>
+          <div class="vs">VS</div>
+          <div class="player player-o">
+            <span class="player-symbol">O</span>
+            <span id="nombreJugadorO" class="player-name"></span>
+          </div>
+        </div>
+        <div class="turn-info">
+          <p>Turno de: <span id="turnoActual"></span></p>
+          <p id="boardInfo">Juega en cualquier tablero</p>
+        </div>
+      </div>
+
+      <div id="metaBoard" class="meta-board"></div>
+
+      <div class="game-controls">
+        <button id="btnReiniciar" class="btn-secondary">Nueva Partida</button>
+      </div>
+    </div>
+
+    <!-- Tabla de puntajes -->
+    <section class="scores-section">
+      <h2>🏆 Tabla de Puntajes</h2>
+      <table id="tablaPuntajes">
+        <thead>
+          <tr>
+            <th>Jugador</th>
+            <th>Puntaje</th>
+            <th>Ganadas</th>
+            <th>Perdidas</th>
+            <th>Empates</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="/js/gato.js"></script>
+</body>
+</html>
